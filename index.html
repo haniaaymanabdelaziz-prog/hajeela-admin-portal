@@ -327,30 +327,6 @@ a.btn{text-decoration:none}
 .page{grid-template-columns:minmax(0,1fr)}
 @media (max-width:980px){.topr{margin-left:0;flex:1 1 100%;justify-content:space-between;order:1}.top .sel.inl{flex:1}.top select{width:100%}.stp b{font-size:1.25rem}.tripr{padding:16px}.head h1{overflow-wrap:anywhere}}
 .nav button .nicn{flex:none!important}.nav button{text-align:left}.drbar{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;background:var(--site);border:1px solid var(--line-2);border-radius:14px;padding:10px 16px}.drbar .lab{text-transform:uppercase;letter-spacing:.06em;font-size:.72rem}.drbar input[type=date]{height:38px;padding:4px 10px}.drbar .small{flex:1 1 220px}.drbar .seg{flex-wrap:wrap}@media (max-width:980px){.drbar .seg{border-radius:14px}}.lnk{color:inherit;text-decoration:none}.lnk:hover{text-decoration:underline}.tr3{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-/* ===== greyscale override: no colour coding ===== */
-:root,:root[data-theme="dark"],:root:not([data-theme="light"]){--c-book:var(--ink);--c-pay:var(--ink);--c-refund:var(--ink);--c-trip:var(--ink);--c-alert:var(--ink);--ok:var(--ink);--bad:var(--ink);--warn:var(--ink)}
-.j-book,.j-pay,.j-refund,.j-trip,.j-alert{--jc:var(--ink)}
-.keyrow{display:none}
-.nav button .nicn{color:var(--ink-2)}
-.st::before{background:var(--ink)}
-.st.warn::before{background:transparent;box-shadow:inset 0 0 0 2px var(--ink)}
-.st.bad::before{border-radius:2px}
-.st.new::before{background:var(--ink);box-shadow:0 0 0 3px var(--fill)}
-.st:not(.ok):not(.warn):not(.bad):not(.new)::before{background:var(--ink-2)}
-.nic,.tint{background:var(--fill);color:var(--ink)}
-.nrow.unread::before{background:var(--ink)}
-.blk,.stats>*{border-top-color:var(--line-2)}
-.blkh h3,.lane h3,.smlane h3{color:var(--ink)}
-.lane,.smlane,.tripr{border-left-color:var(--ink)}
-.stp .dotn i,.trk .tn i{background:var(--ink);color:var(--site)}
-.trk .tn{background:var(--soft);border-color:var(--line)}
-.prog .done{background:var(--soft)}
-.bar .c{background:var(--ink)}.bar .p{background:repeating-linear-gradient(45deg,var(--ink-2) 0 4px,var(--site) 4px 8px)}
-.legend i[style*="c-trip"]{background:var(--ink)!important}
-.btn.danger{color:var(--ink)}
-.btn.danger:hover{border-color:var(--ink)}
-.nmeta span.bad{border-color:var(--ink);color:var(--ink)}
-
 /* ===== differentiate without colour ===== */
 .st{border:1px solid var(--line);border-radius:999px;padding:3px 11px 3px 8px;font-size:.82rem;gap:6px;background:var(--site)}
 .st::before{width:auto!important;height:auto!important;background:none!important;box-shadow:none!important;border-radius:0!important;font-size:.85rem;line-height:1;content:"•"}
@@ -378,7 +354,85 @@ a.btn{text-decoration:none}
 .nrow.unread .nic{background:var(--ink);color:var(--site);border-color:var(--ink)}
 .tripr{border-left:1px solid var(--line-2)}
 @media (max-width:980px){.lane{grid-template-columns:1fr}.stp .dotn::after{display:none}}
-</style></head><body>
+/* ===== trip pages editor ===== */
+.av{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--site);display:inline-grid;place-items:center;font-size:.75rem;font-weight:600;flex:none;letter-spacing:.02em}
+.av.sm{width:28px;height:28px;font-size:.68rem}.av.lg{width:48px;height:48px;font-size:.95rem}
+.av.dash{background:var(--site);color:var(--ink);border:1.5px dashed var(--ink)}
+.who1{display:flex;gap:10px;align-items:center}.who2{display:flex;gap:14px;align-items:center}
+.acct{display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px dashed var(--line);border-radius:14px;padding:10px 14px;background:var(--site)}
+.acct .lab{text-transform:uppercase;letter-spacing:.06em;font-size:.72rem}.acct select{width:auto;min-width:220px;height:38px;padding:4px 34px 4px 12px;border-radius:999px}
+.acct .small{flex:1 1 220px}
+.feed{display:grid;border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+.frow{display:grid;grid-template-columns:34px minmax(0,1fr) 20px;gap:12px;align-items:center;padding:12px 16px;border:0;border-bottom:1px solid var(--line-2);background:var(--site);text-align:left}
+.frow:last-child{border-bottom:0}.frow:hover{background:var(--soft)}.frow b{font-weight:600}
+.fmeta{display:block;margin-top:2px}
+.cov{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;align-items:center}
+.ph{position:relative;background:var(--fill);border-radius:8px;aspect-ratio:16/10;display:grid;place-items:center;color:var(--ink-2);overflow:hidden}
+.ph svg{position:absolute;inset:0;width:100%;height:100%}.ph span{position:relative;background:var(--site);padding:2px 8px;border-radius:999px;font-size:.72rem}
+.ph.big{aspect-ratio:21/9}
+.dayc{border:1px solid var(--line-2);border-radius:12px;padding:14px;display:grid;gap:10px}
+.dayh2{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.depr{display:grid;grid-template-columns:170px 100px minmax(0,1fr) auto;gap:12px;align-items:end;border-bottom:1px solid var(--line-2);padding-bottom:12px}
+.hist{display:grid;grid-template-columns:260px minmax(0,1fr);gap:20px;align-items:start}
+.vlist{display:grid;gap:2px;background:var(--site);border:1px solid var(--line-2);border-radius:14px;padding:8px;max-height:640px;overflow:auto}
+.vday{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);padding:10px 8px 4px}
+.vrow{display:grid;grid-template-columns:28px minmax(0,1fr);gap:10px;align-items:start;text-align:left;border:0;background:none;padding:8px;border-radius:10px;width:100%}
+.vrow>span:last-child{display:grid;gap:1px}.vrow:hover{background:var(--soft)}.vrow.on{background:var(--fill)}
+.vrow.cur{border:1px dashed var(--line)}
+.st[hidden]{display:none!important}.scpick{border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:0}.scpick legend{padding:0 6px}.scp{font-size:.88rem}.panel .who1{justify-content:flex-start}.panel .who1>span:not(.av){flex:1}.panel .who1 .btn{width:auto}.blk .field{align-content:start}.blk .fgrid{align-items:start}.vrow .flag{justify-self:start}
+.vdet{background:var(--site);border:1px solid var(--line-2);border-radius:14px;padding:20px;display:grid;gap:14px;min-width:0}
+.vdet h4{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+.chg{margin:0;padding-left:18px;display:grid;gap:8px;font-size:.92rem}
+.chg del{color:var(--ink-2);text-decoration:line-through}.chg ins{text-decoration:none;background:var(--fill);padding:0 4px;border-radius:4px;font-weight:500}
+.prevs{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:20px;align-items:start}
+.pweb,.pphone{background:var(--site);border:1px solid var(--line-2);border-radius:14px;overflow:hidden;margin-top:6px}
+.pwb{padding:18px;display:grid;gap:10px}.ppb{padding:14px;display:grid;gap:6px}
+.pphone{border:8px solid var(--ink);border-radius:28px}
+.pdays{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}.pdays>div{border:1px solid var(--line-2);border-radius:10px;padding:10px;display:grid;gap:2px}
+.tagx{justify-self:start;font-size:.72rem;border:1px solid var(--ink);border-radius:999px;padding:1px 9px}
+.chipx{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin:2px 2px 0 0;font-size:.8rem}
+@media (max-width:1100px){.hist,.prevs{grid-template-columns:1fr}.vlist{max-height:320px}}
+@media (max-width:980px){.depr{grid-template-columns:1fr 1fr}.depr .field:nth-child(3){grid-column:1/-1}.cov{grid-template-columns:1fr}.acct select{min-width:0;width:100%}.acct .sel{flex:1}}
+
+/* ===== colour v3: refined journey palette (colour + symbol, never colour alone) ===== */
+:root{--c-book:#2F5BD3;--c-pay:#1D7A4F;--c-refund:#BE3F2E;--c-trip:#6D48C8;--c-alert:#A86A0B;--c-team:#0E7C86;--ok:var(--c-pay);--bad:var(--c-refund);--warn:var(--c-alert)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c-book:#8EAEFF;--c-pay:#62C796;--c-refund:#F08C7A;--c-trip:#B9A2F5;--c-alert:#E8B657;--c-team:#5CCBD3}}
+:root[data-theme="dark"]{--c-book:#8EAEFF;--c-pay:#62C796;--c-refund:#F08C7A;--c-trip:#B9A2F5;--c-alert:#E8B657;--c-team:#5CCBD3}
+.j-team{--jc:var(--c-team)}
+.keyrow{display:flex}
+.nav button .nicn{color:var(--jc,var(--ink-2))}
+.nav button.on{background:color-mix(in srgb,var(--jc,var(--ink)) 12%,var(--site));color:var(--ink);box-shadow:inset 3px 0 0 var(--jc,var(--ink))}
+.nav button.on .nicn{color:var(--jc,var(--ink))}
+.nav button.on .badge{background:var(--ink);color:var(--site)}
+.nic,.tint{background:color-mix(in srgb,var(--jc,var(--ink-2)) 13%,var(--site));color:var(--jc,var(--ink));border-color:transparent}
+.nrow.unread .nic{background:var(--jc,var(--ink));color:#fff;border-color:transparent}
+.nrow.unread::before{background:var(--jc,var(--ink))}
+.lic,.hic{background:color-mix(in srgb,var(--jc,var(--ink)) 14%,var(--site));color:var(--jc,var(--ink))}
+.lane,.smlane{border-left:4px solid var(--jc,var(--line-2))}
+.lane h3,.smlane h3,.blkh h3{color:var(--ink)}
+.stats>*{border-top:3px solid var(--jc,var(--line-2))}
+.blk{border-top:1px solid var(--line-2);box-shadow:inset 0 3px 0 var(--jc,transparent)}
+.tripr{border-left:4px solid var(--c-trip)}
+.stp .dotn i,.trk .tn i{background:var(--jc);color:#fff}
+.stp.alert b{color:var(--jc)}
+.trk .tn{background:color-mix(in srgb,var(--jc) 7%,var(--site));border-color:color-mix(in srgb,var(--jc) 30%,var(--line))}
+.prog .done{background:color-mix(in srgb,var(--jc) 8%,var(--site))}
+.bar .c{background:var(--c-trip)}.bar .p{background:repeating-linear-gradient(45deg,var(--c-trip) 0 4px,var(--site) 4px 8px)}
+.st.ok{color:var(--c-pay);border-color:color-mix(in srgb,var(--c-pay) 35%,var(--line));background:color-mix(in srgb,var(--c-pay) 8%,var(--site))}
+.st.warn{color:var(--c-alert);border-color:color-mix(in srgb,var(--c-alert) 35%,var(--line));background:color-mix(in srgb,var(--c-alert) 8%,var(--site))}
+.st.attn,.st.bad{background:var(--c-refund);border-color:var(--c-refund);color:#fff}
+.st.new{background:var(--c-book);border-color:var(--c-book);color:#fff}
+.btn.danger{color:var(--c-refund)}.btn.danger:hover{border-color:var(--c-refund)}
+.nmeta span.bad{border-color:var(--c-refund);color:var(--c-refund)}
+.flag{background:var(--jc,var(--ink))}
+.av{background:var(--c-team)}
+.vrow.on{background:color-mix(in srgb,var(--c-team) 12%,var(--site))}
+.chg ins{background:color-mix(in srgb,var(--c-pay) 14%,var(--site));color:var(--ink)}
+.chg del{color:var(--c-refund)}
+.tagx{border-color:var(--c-team);color:var(--c-team)}
+</style>
+</head>
+<body>
 <div id="app"></div>
 <div id="toast" class="toast" role="status" hidden></div>
 <script>
@@ -701,11 +755,185 @@ V.architecture=()=>`<div class="arch" style="display:grid;gap:24px"><div class="
  <section class="card"><h3>5. Audit log</h3><ul><li>Every change to a booking, payment, trip assignment or permission is written to an append-only log: who, what, before and after, and when.</li><li>Nobody can edit or delete log entries, including the Owner.</li></ul></section>
  <section class="card"><h3>6. Privacy and permissions</h3><ul><li>Roles decide what each team member sees. Support, for example, sees masked phone numbers and emails and no payment details.</li><li>Notification previews contain the reference, trip and seat count only. Names and contact details appear after sign-in.</li><li>Sign-in uses two-step verification. Personal data is encrypted when stored and sent. Exports are logged.</li><li>Assumption: customer data is kept for a set period after the trip, then anonymised. Confirm the period and Egyptian data-protection requirements with your adviser.</li></ul></section>
  <section class="card"><h3>7. Channels</h3><ul><li><b>In portal:</b> always on.</li><li><b>Email:</b> sent through a transactional email service from a Hajeela address. Templates follow the Hajeela voice.</li><li><b>WhatsApp:</b> only through an approved WhatsApp Business account and pre-approved message templates. Off until configured.</li><li><b>Mobile push:</b> the same events can feed the Hajeela app later. Device tokens are stored per person.</li></ul></section></div>`;
+/* ===== Trip pages: content editor with version history (sample data) ===== */
+const TEAM=[
+ {id:'hania',name:'Hania',email:'hania@hajeela.example',role:'Owner',scope:'all'},
+ {id:'mario',name:'Mario',email:'mario@hajeela.example',role:'Owner',scope:'all'},
+ {id:'nadim',name:'Nadim',email:'nadim@hajeela.example',role:'Owner',scope:'all'},
+ {id:'admin',name:'Admin',email:'admin@hajeela.example',role:'Editor',scope:'all'},
+ {id:'lead',name:'Trip lead (sample)',email:'triplead@hajeela.example',role:'Editor',scope:['dahab'],invitedBy:'hania'}];
+const hasT=(u,t)=>!!t&&(u.scope==='all'||u.scope.includes(t.id));
+const scopeTxt=u=>u.scope==='all'?'All trips':u.scope.map(id=>{const t=CT.find(x=>x.id===id);return t?t.draft.name:id}).join(', ')||'No trips';
+const CROLE={Owner:{edit:1,publish:1,team:1},Editor:{edit:1,publish:0,team:0},Viewer:{edit:0,publish:0,team:0}};
+const ENV=['Sand','Sea','Summit','Snow'];
+const PICK=['Tagamoa','Sheikh Zayed','Maadi'];
+const PHOTOS=['Reef from the boat','Camp at sunset','Group on the dune','Lagoon from above','Night sky at camp'];
+const who=id=>TEAM.find(u=>u.id===id)||{id,name:'Removed account',email:'',role:'Viewer'};
+const me=()=>who(S.me||'hania');const ccan=k=>!!CROLE[me().role][k]&&(!curT()||hasT(me(),curT()));
+const ini=n=>n.split(/\s+/).filter(w=>/^[A-Za-z]/.test(w)).slice(0,2).map(w=>w[0]).join('').toUpperCase()||'?';
+const av=(id,sz)=>`<span class="av${sz?' '+sz:''}" aria-hidden="true">${ini(who(id).name)}</span>`;
+const cp=o=>JSON.parse(JSON.stringify(o));
+let CLK=0;const tick=()=>new Date(NOW.getTime()+(++CLK)*60000).toISOString();
+const FL={name:'Trip name',env:'Environment',dest:'Destination',dur:'Duration',summary:'Short description',cover:'Cover photo',price:'Price per person',incl:"What's included"};
+const showF=(k,v)=>k==='price'?money(v):k==='incl'?(v||'').split('\n').filter(Boolean).join(', '):v;
+function diff(a,b){const out=[];if(!a){out.push({txt:'Trip page created'});return out}
+ Object.keys(FL).forEach(k=>{if(String(a[k])!==String(b[k]))out.push({f:FL[k],from:showF(k,a[k]),to:showF(k,b[k])})});
+ const n=Math.max(a.days.length,b.days.length);
+ for(let i=0;i<n;i++){const x=a.days[i],y=b.days[i];
+  if(!x)out.push({txt:`Added Day ${i+1}: ${y.title}`});else if(!y)out.push({txt:`Removed Day ${i+1}: ${x.title}`});
+  else{if(x.title!==y.title)out.push({f:`Day ${i+1} title`,from:x.title,to:y.title});if(x.text!==y.text)out.push({f:`Day ${i+1} description`,from:x.text,to:y.text})}}
+ const ka=a.deps.map(d=>d.date),kb=b.deps.map(d=>d.date);
+ b.deps.forEach(d=>{const o=a.deps.find(x=>x.date===d.date);if(!o){if(d.date)out.push({txt:`Added departure ${fmtD(d.date)}, ${d.seats} seats`});return}
+  if(+o.seats!==+d.seats)out.push({f:`Seats on ${fmtD(d.date)}`,from:o.seats,to:d.seats});
+  if(o.pick!==d.pick)out.push({f:`Pickup on ${fmtD(d.date)}`,from:o.pick,to:d.pick})});
+ a.deps.forEach(d=>{if(!kb.includes(d.date)&&d.date)out.push({txt:`Removed departure ${fmtD(d.date)}`})});
+ return out}
+const BASE={
+ dahab:{name:'Dahab reef & desert weekend',env:'Sea',dest:'Dahab',dur:'3 days, 2 nights',summary:'Snorkel the Lighthouse reef, ride into the canyon at sunset and sleep by the sea with your crew.',cover:'Reef from the boat',price:6500,incl:'Bus from Cairo and back\n2 nights by the sea\nSnorkel gear\nHajeela host',days:[{title:'Into the Sinai',text:'Morning pickup, the road along the Gulf, and a first swim before dinner.'},{title:'Reef and canyon',text:'Lighthouse reef in the morning. Colored Canyon in the afternoon.'},{title:'Slow morning, home',text:'Breakfast by the water, then the bus home.'}],deps:[{date:'2026-12-10',seats:14,pick:'Tagamoa 07:00 · Sheikh Zayed 07:00 · Maadi 07:30'}]},
+ ras:{name:'Ras Mohammed island hopping',env:'Sea',dest:'Ras Mohammed',dur:'2 days, 1 night',summary:'Two boat days between the reefs of Ras Mohammed, with lunch on deck.',cover:'Lagoon from above',price:7900,incl:'Bus\nBoat days\nLunch on board\nHajeela host',days:[{title:'Out to the reefs',text:'Boat from the marina, three snorkel stops.'},{title:'White Island',text:'The sandbar at low tide, then home.'}],deps:[{date:'2026-12-03',seats:10,pick:'Tagamoa 06:00 · Maadi 06:30'}]},
+ white:{name:'White Desert camp night',env:'Sand',dest:'White Desert',dur:'2 days, 1 night',summary:'Chalk rock towers, a Bedouin dinner and a sky full of stars.',cover:'Camp at sunset',price:4200,incl:'4x4 transfer\nCamp and dinner\nHajeela host',days:[{title:'Into the white',text:'Drive through the Black Desert to camp.'},{title:'Sunrise and home',text:'Sunrise walk, breakfast, the road home.'}],deps:[{date:'2026-12-03',seats:6,pick:'Tagamoa 05:30 · Sheikh Zayed 05:30'}]},
+ fayoum:{name:'Fayoum sandboarding & pottery',env:'Sand',dest:'Fayoum',dur:'1 day',summary:'Board down the dunes, then make your own pot in Tunis village.',cover:'Group on the dune',price:1800,incl:'Bus\nBoards\nPottery class\nLunch',days:[{title:'Dunes and clay',text:'Sandboarding in the morning, pottery after lunch.'}],deps:[{date:'2026-11-27',seats:20,pick:'Tagamoa 07:00 · Maadi 07:30'}]},
+ siwa:{name:'Siwa oasis long weekend',env:'Sand',dest:'Siwa',dur:'4 days, 3 nights',summary:'Salt lakes, hot springs and dinner under palm trees.',cover:'Night sky at camp',price:3200,incl:'Bus\n3 nights\nSalt lake swim',days:[{title:'The long road west',text:'A full day on the road with stops by the sea.'}],deps:[]}};
+const CT=[];
+function seed(id,steps){const t={id,ver:[],live:null,draft:null};let prev=null,s=cp(BASE[id]);
+ steps.forEach((st,i)=>{if(st.mut)st.mut(s);const snap=cp(s);const pubd=st.kind==='Published';t.ver.push({n:i+1,t:ago(st.ago),by:st.by,kind:st.kind,note:st.note||'',changes:pubd&&t.live?diff(t.live,snap):diff(prev,snap),snap});if(st.kind==='Published'||st.kind==='Created and published')t.live=cp(snap);prev=snap});
+ t.draft=cp(prev);CT.push(t)}
+seed('dahab',[
+ {by:'mario',ago:50400,kind:'Created and published'},
+ {by:'hania',ago:20500,kind:'Published',mut:s=>{s.price=6900;s.deps.push({date:'2027-01-14',seats:14,pick:'Tagamoa 07:00 · Sheikh Zayed 07:00 · Maadi 07:30'})}},
+ {by:'mario',ago:1820,kind:'Draft saved',mut:s=>{s.days[1].text='Lighthouse reef in the morning. Colored Canyon at sunset, then dinner in town.';s.deps[0].pick='Tagamoa 07:00 · Sheikh Zayed 07:00 · Maadi 07:15'}},
+ {by:'hania',ago:145,kind:'Published',mut:s=>{s.deps[0].seats=16}},
+ {by:'admin',ago:40,kind:'Draft saved',note:'Waiting for an owner to publish',mut:s=>{s.cover='Group on the dune';s.summary='Snorkel the Lighthouse reef, ride into the canyon at sunset and share a slow breakfast by the sea with your crew.'}}]);
+seed('ras',[{by:'hania',ago:41000,kind:'Created and published'},{by:'mario',ago:9000,kind:'Published',mut:s=>{s.deps[0].seats=8}}]);
+seed('white',[{by:'mario',ago:38000,kind:'Created and published'}]);
+seed('fayoum',[{by:'hania',ago:30000,kind:'Created and published'},{by:'nadim',ago:4400,kind:'Published',mut:s=>{s.incl+='\nTea at the lake'}}]);
+seed('siwa',[{by:'mario',ago:700,kind:'Draft saved',note:'Not on the website or app yet'}]);
+const cOf=id=>CT.find(t=>t.id===id);
+const lastV=t=>t.ver[t.ver.length-1];
+const unsaved=t=>diff(lastV(t).snap,t.draft).length>0;
+const unpub=t=>!t.live||diff(t.live,lastV(t).snap).length>0;
+const cstat=t=>!t.live?['Draft, not live','warn']:unpub(t)||unsaved(t)?['Live · changes not published','warn']:['Live on website and app','ok'];
+const nextDep=s=>s.deps.map(d=>d.date).filter(d=>d&&d>=cairoDay(NOW)).sort()[0];
+const verb=k=>({'Created and published':'created and published','Published':'published','Draft saved':'saved a draft of','Restored':'restored an older version of','Duplicated':'created by duplicating','Created':'created'}[k]||k.toLowerCase());
+const dayLabel=iso=>{const d=cairoDay(iso),t=cairoDay(NOW);if(d===t)return 'Today';if(d===cairoDay(new Date(NOW-864e5)))return 'Yesterday';return new Date(iso).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'Africa/Cairo'})};
+const clock=iso=>new Date(iso).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'Africa/Cairo'});
+const fullT=iso=>new Date(iso).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'Africa/Cairo'})+' at '+clock(iso)+' (Cairo)';
+const acct=()=>`<div class="acct"><span class="lab">Signed in as</span>${av(me().id,'sm')}<label class="sel"><span class="vh">Signed in as</span><select id="cme">${TEAM.map(u=>`<option value="${u.id}" ${me().id===u.id?'selected':''}>${esc(u.name)} · ${u.role}</option>`).join('')}</select></label><span class="muted small">Prototype only: switch account to see how each edit is recorded.</span></div>`;
+const chg=c=>c.txt?`<li>${esc(c.txt)}</li>`:`<li><span class="muted">${esc(c.f)}:</span> <del>${esc(c.from)}</del> <span aria-hidden="true">→</span><span class="vh">changed to</span> <ins>${esc(c.to)}</ins></li>`;
+
+const scopePick=(nm,sel)=>`<fieldset class="scpick"><legend class="lab">Pick trips</legend>${CT.map(t=>`<label class="switch"><input type="checkbox" name="${nm}" value="${t.id}" ${sel==='all'||(sel||[]).includes(t.id)?'checked':''}> ${esc(t.draft.name)}</label>`).join('')}</fieldset>`;
+V.pages=()=>{const all=[],VT=CT.filter(t=>hasT(me(),t));VT.forEach(t=>t.ver.forEach(v=>all.push({t,v})));all.sort((a,b)=>new Date(b.v.t)-new Date(a.v.t));
+ const f=S.cwho||'all',feed=all.filter(x=>f==='all'||x.v.by===f).slice(0,12);
+ return `<div class="head"><div><h1>Trip pages</h1><p class="muted sub">Edit what travellers see on the website and in the app. Every save is kept with the account, the time and exactly what changed, like version history in Google Drive.</p></div><div class="hact">${ccan('edit')&&me().scope==='all'?'<button class="btn solid" data-ce="new">New trip page</button>':''}</div></div>
+ ${acct()}
+ ${me().scope!=='all'?`<div class="note">You have access to ${VT.length} trip${VT.length===1?'':'s'}: ${esc(scopeTxt(me()))}. Other trips are hidden from your account.</div>`:''}
+ <div class="tblw"><table class="tbl"><thead><tr><th>Trip</th><th>Status</th><th>Next departure</th><th>Last edited</th><th aria-label="Actions"></th></tr></thead><tbody>${VT.map(t=>{const s=cstat(t),l=lastV(t),nd=nextDep(t.draft);return `<tr class="row" tabindex="0" data-ce="open" data-id="${t.id}"><td><b>${esc(t.draft.name)}</b><div class="muted small">${t.draft.env} · ${esc(t.draft.dest)}</div></td><td>${st(s[0],s[1]==='ok'?'Confirmed':'Pending')}</td><td>${nd?fmtD(nd):'<span class="muted">None yet</span>'}</td><td><div class="who1">${av(l.by,'sm')}<span>${esc(who(l.by).name)}<div class="muted small">${rel(l.t)}</div></span></div></td><td><button class="btn sm" data-ce="dup" data-id="${t.id}" ${ccan('edit')?'':'disabled'}>Duplicate</button></td></tr>`}).join('')}</tbody></table></div>
+ <section class="blk"><div class="blkh"><h3>Recent changes</h3><p class="muted small">Across every trip page. Cannot be edited or deleted, even by an owner.</p></div><div class="blkb">
+ <div class="seg wrap" role="group" aria-label="Filter by person"><button class="${f==='all'?'on':''}" data-ce="cwho" data-id="all">Everyone</button>${TEAM.map(u=>`<button class="${f===u.id?'on':''}" data-ce="cwho" data-id="${u.id}">${esc(u.name)}</button>`).join('')}</div>
+ ${feed.length?`<div class="feed">${feed.map(x=>`<button class="frow" data-ce="ver" data-id="${x.t.id}" data-v="${x.v.n}">${av(x.v.by)}<span><b>${esc(who(x.v.by).name)}</b> ${verb(x.v.kind)} <b>${esc(x.v.snap.name)}</b><span class="muted small"> · ${x.v.changes.length} change${x.v.changes.length===1?'':'s'}</span><span class="muted small fmeta">${esc(who(x.v.by).email)} · ${fullT(x.v.t)}</span></span><span class="muted">${ic('chev')}</span></button>`).join('')}</div>`:'<p class="muted small">No changes by this person yet.</p>'}
+ </div></section>
+ ${me().scope!=='all'?'':`<section class="blk"><div class="blkh"><h3>Team and access</h3><p class="muted small">Each person signs in with their own account, so every change has a name on it. Never share one login.</p></div><div class="blkb">
+ <div class="tblw"><table class="tbl"><thead><tr><th>Person</th><th>Account</th><th>Access</th><th>Trips</th>${ccan('team')?'<th aria-label="Actions"></th>':''}</tr></thead><tbody>${TEAM.map(u=>`<tr><td><div class="who1">${av(u.id,'sm')}<b>${esc(u.name)}</b></div></td><td class="muted">${esc(u.email)}</td><td>${u.role}</td><td>${u.scope==='all'?'All trips':`<span class="scp">${esc(scopeTxt(u))}</span>`}</td>${ccan('team')?`<td>${u.role!=='Owner'?`<button class="btn sm" data-ce="scope" data-id="${u.id}">${S.scopeEd===u.id?'Close':'Change trips'}</button>`:'<span class="muted small">Owners see all</span>'}</td>`:''}</tr>${S.scopeEd===u.id?`<tr><td colspan="5">${scopePick('sc-'+u.id,u.scope)}<div class="row2"><button class="btn sm solid" data-ce="scopesave" data-id="${u.id}">Save access</button></div></td></tr>`:''}`).join('')}</tbody></table></div>
+ <ul class="rules"><li><b>Owner:</b> edits, publishes, restores old versions and manages the team. Always sees every trip.</li><li><b>Trip access:</b> Editors and Viewers can be limited to certain trips. They only see those trips, their history and their changes. Everything else stays hidden.</li><li><b>Editor:</b> edits and saves drafts. An owner publishes. Good for a new teammate.</li><li><b>Viewer:</b> sees their trips, changes nothing.</li></ul>
+ ${ccan('team')?`<div class="sub-form"><h4>Invite a teammate</h4><div class="row2"><input id="inv" type="email" placeholder="New teammate's email" aria-label="New teammate's email" value="${esc(S.invEm||'')}"><select id="invr" aria-label="Access">${['Editor','Viewer','Owner'].map(x=>`<option ${S.invR===x?'selected':''}>${x}</option>`).join('')}</select></div>${S.invR==='Owner'?'<p class="muted small">Owners always see every trip.</p>':`<div class="field"><span class="lab">Which trips can they open?</span><div class="seg" role="group" aria-label="Trip access"><button class="${S.invAll!==false?'on':''}" data-ce="invall" data-id="1">All trips</button><button class="${S.invAll===false?'on':''}" data-ce="invall" data-id="0">Only certain trips</button></div></div>${S.invAll===false?scopePick('sc-inv',[]):''}`}<div class="row2"><button class="btn sm solid" data-ce="invite">Send invite</button></div></div>`:'<p class="muted small">Only an owner can invite people.</p>'}
+ </div></section>`}`};
+
+const field=(lab,path,val,o={})=>`<div class="field${o.wide?' wide':''}"><label for="cf-${path}">${lab}</label>${o.area?`<textarea id="cf-${path}" data-cf="${path}" ${o.ro?'readonly':''}>${esc(val)}</textarea>`:o.opts?`<select id="cf-${path}" data-cf="${path}" ${o.ro?'disabled':''}>${o.opts.map(x=>`<option ${x===val?'selected':''}>${x}</option>`).join('')}</select>`:`<input id="cf-${path}" data-cf="${path}" type="${o.type||'text'}" value="${esc(val)}" ${o.ro?'readonly':''} ${o.min!=null?'min="'+o.min+'"':''}>`}${o.hint?`<span class="muted small">${o.hint}</span>`:''}</div>`;
+const ph=(cap,cls)=>`<div class="ph ${cls||''}" role="img" aria-label="Photo placeholder: ${esc(cap)}"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".4" vector-effect="non-scaling-stroke"/></svg><span>${esc(cap)}</span></div>`;
+function editTab(t){const d=t.draft,ro=!ccan('edit');
+ return `${ro?'<div class="note">Your account can view this page but not edit it.</div>':''}
+ <section class="blk"><div class="blkh"><h3>Basics</h3></div><div class="blkb"><div class="fgrid">
+ ${field('Trip name','name',d.name,{ro})}${field('Environment','env',d.env,{opts:ENV,ro})}${field('Destination','dest',d.dest,{ro})}${field('Duration','dur',d.dur,{ro,hint:'For example: 3 days, 2 nights'})}${field('Short description','summary',d.summary,{area:1,wide:1,ro,hint:'One or two sentences. Shown on trip cards on the website and in the app.'})}
+ <div class="field wide"><span class="lab">Cover photo</span><div class="cov">${ph(d.cover)}<div><p class="small">${esc(d.cover)}</p><p class="muted small">Sample placeholder. In the real portal you upload a photo here.</p>${ro?'':'<button class="btn sm" data-ce="photo">Replace photo</button>'}</div></div></div>
+ </div></div></section>
+ <section class="blk"><div class="blkh"><h3>Days</h3><p class="muted small">Each day is a trailer, not a timetable.</p></div><div class="blkb">
+ ${d.days.map((x,i)=>`<div class="dayc"><div class="dayh2"><b>Day ${i+1}</b>${ro?'':`<span class="row2"><button class="btn sm ghost" data-ce="dup1" data-i="${i}" ${i===0?'disabled':''} aria-label="Move day ${i+1} up">↑</button><button class="btn sm ghost" data-ce="ddn" data-i="${i}" ${i===d.days.length-1?'disabled':''} aria-label="Move day ${i+1} down">↓</button><button class="btn sm ghost" data-ce="drm" data-i="${i}" ${d.days.length<2?'disabled':''}>Remove</button></span>`}</div><div class="fgrid">${field('Title','days.'+i+'.title',x.title,{ro,wide:1})}${field('What happens','days.'+i+'.text',x.text,{area:1,wide:1,ro})}</div></div>`).join('')}
+ ${ro?'':'<div><button class="btn sm" data-ce="dadd">Add a day</button></div>'}
+ </div></section>
+ <section class="blk"><div class="blkh"><h3>Departures</h3><p class="muted small">Add next month's dates here. Seats feed Trips and capacity.</p></div><div class="blkb">
+ ${d.deps.length?d.deps.map((x,i)=>`<div class="depr">${field('Date','deps.'+i+'.date',x.date,{type:'date',ro})}${field('Seats','deps.'+i+'.seats',x.seats,{type:'number',min:1,ro})}${field('Pickup points and times','deps.'+i+'.pick',x.pick,{ro})}${ro?'':`<button class="btn sm ghost" data-ce="deprm" data-i="${i}">Remove</button>`}</div>`).join(''):'<p class="muted small">No departures yet. The trip shows "Dates coming soon".</p>'}
+ ${ro?'':'<div><button class="btn sm" data-ce="depadd">Add a departure</button></div>'}
+ </div></section>
+ <section class="blk"><div class="blkh"><h3>Price and what's included</h3></div><div class="blkb"><div class="fgrid">${field('Price per person (EGP)','price',d.price,{type:'number',min:0,ro})}${field("What's included",'incl',d.incl,{area:1,ro,hint:'One item per line.'})}</div></div></section>`}
+function preview(s,lab){return `<div class="prevs"><div><p class="eyebrow">Website${lab?' · '+lab:''}</p><div class="pweb">${ph(s.cover,'big')}<div class="pwb"><span class="tagx">${s.env}</span><h2>${esc(s.name)}</h2><p class="muted small">${esc(s.dest)} · ${esc(s.dur)}</p><p>${esc(s.summary)}</p><p><b>${money(s.price)}</b> <span class="muted small">per person</span></p><div class="pdays">${s.days.map((x,i)=>`<div><span class="muted small">Day ${i+1}</span><b>${esc(x.title)}</b><p class="small">${esc(x.text)}</p></div>`).join('')}</div><p class="small"><b>Dates</b> ${s.deps.length?s.deps.filter(x=>x.date).map(x=>`<span class="chipx">${fmtD(x.date)}</span>`).join(' '):'<span class="muted">Coming soon</span>'}</p></div></div></div>
+ <div><p class="eyebrow">App</p><div class="pphone">${ph(s.cover)}<div class="ppb"><span class="tagx">${s.env}</span><b>${esc(s.name)}</b><p class="muted small">${esc(s.dur)} · ${money(s.price)}</p><p class="small">${esc(s.summary)}</p>${s.days.map((x,i)=>`<p class="small"><b>Day ${i+1}</b> ${esc(x.title)}</p>`).join('')}</div></div></div></div>
+ <p class="muted small">Sample preview in the low-fi style. Photos are placeholders.</p>`}
+function histTab(t){const sel=S.cver&&S.cver.id===t.id?S.cver.n:lastV(t).n,v=t.ver.find(x=>x.n===sel)||lastV(t),liveN=(()=>{for(let i=t.ver.length-1;i>=0;i--){if(t.live&&diff(t.ver[i].snap,t.live).length===0)return t.ver[i].n}return null})();
+ const groups=[];t.ver.slice().reverse().forEach(x=>{const g=dayLabel(x.t);let G=groups.find(y=>y.g===g);if(!G)groups.push(G={g,l:[]});G.l.push(x)});
+ return `<div class="hist"><div class="vlist" role="list">${unsaved(t)?`<div class="vrow cur" role="listitem"><span class="av sm dash" aria-hidden="true">•</span><span><b>Current edits, not saved</b><span class="muted small">${diff(lastV(t).snap,t.draft).length} change(s) by ${esc(me().name)}</span></span></div>`:''}
+ ${groups.map(G=>`<p class="vday">${G.g}</p>${G.l.map(x=>`<button role="listitem" class="vrow ${x.n===v.n?'on':''}" data-ce="ver" data-id="${t.id}" data-v="${x.n}">${av(x.by,'sm')}<span><b>${clock(x.t)}</b> ${x.n===liveN?'<span class="flag">Live now</span>':''}<span class="small">${esc(who(x.by).name)}</span><span class="muted small">${x.kind}</span></span></button>`).join('')}`).join('')}</div>
+ <div class="vdet"><div class="who2">${av(v.by,'lg')}<div><h3>${esc(who(v.by).name)}</h3><p class="muted small">${esc(who(v.by).email)} · ${who(v.by).role}</p></div></div>
+ <div class="kvs"><div class="kv"><span>When</span><b>${fullT(v.t)}</b></div><div class="kv"><span>What they did</span><b>${v.kind}${v.n===liveN?' · live now':''}</b></div><div class="kv"><span>Version</span><b>${v.n} of ${t.ver.length}</b></div>${v.note?`<div class="kv"><span>Note</span><b>${esc(v.note)}</b></div>`:''}</div>
+ <h4>What changed</h4><ul class="chg">${v.changes.map(chg).join('')||'<li class="muted">No content changes.</li>'}</ul>
+ <div class="row2">${ccan('edit')&&v.n!==lastV(t).n?`<button class="btn solid" data-ce="restore" data-id="${t.id}" data-v="${v.n}">Restore this version</button>`:''}<button class="btn" data-ce="vprev" data-id="${t.id}" data-v="${v.n}">${S.vprev===t.id+':'+v.n?'Hide preview':'Preview this version'}</button></div>
+ ${ccan('edit')&&v.n!==lastV(t).n?'<p class="muted small">Restoring copies this version into a new draft. Nothing is deleted, and nothing goes live until someone publishes.</p>':''}
+ ${S.vprev===t.id+':'+v.n?preview(v.snap,'version '+v.n):''}
+ </div></div>`}
+V.tpage=id=>{const t=cOf(id);if(!t)return `<div class="empty">Trip page not found. <button class="btn ghost" data-go="pages">Back to trip pages</button></div>`;
+ if(!hasT(me(),t))return `<div><button class="btn ghost" data-go="pages">← All trip pages</button></div>${acct()}<div class="empty"><h2>You don't have access to this trip</h2><p class="muted" style="margin:8px 0 16px">Your account (${esc(me().email)}) can open: ${esc(scopeTxt(me()))}.</p><button class="btn solid" data-ce="askacc">Ask an owner for access</button></div>`;
+ const tab=(S.ctab||{})[id]||'edit',s=cstat(t),l=lastV(t),u=diff(lastV(t).snap,t.draft).length,p=t.live?diff(t.live,l.snap).length:null,canPub=ccan('publish')&&(u>0||p>0||!t.live);
+ return `<div><button class="btn ghost" data-go="pages">← All trip pages</button></div>
+ <div class="head"><div><div class="sts">${st(s[0],s[1]==='ok'?'Confirmed':'Pending')}<span class="st" id="unsv" ${u?'':'hidden'}>Unsaved edits</span></div><h1 style="margin-top:8px">${esc(t.draft.name)}</h1><p class="muted sub">Last edited by ${esc(who(l.by).name)} (${esc(who(l.by).email)}), ${rel(l.t)}.</p></div></div>
+ ${acct()}
+ <div class="tabs" role="tablist" aria-label="Trip page">${[['edit','Edit'],['preview','Preview'],['history','Version history',t.ver.length]].map(x=>`<button role="tab" class="${tab===x[0]?'on':''}" aria-selected="${tab===x[0]}" data-ce="tab" data-id="${id}" data-v="${x[0]}">${x[1]}${x[2]?`<span class="n">${x[2]}</span>`:''}</button>`).join('')}</div>
+ ${tab==='history'?histTab(t):`<div class="dl"><div class="dlm">${tab==='edit'?editTab(t):preview(t.draft,'draft')}</div>
+ <aside class="dla"><div class="panel"><h3>Save and publish</h3>
+ <p class="small" id="cstate">${u?`${u} unsaved change${u>1?'s':''}.`:'All edits saved.'} ${t.live?(p?`${p} saved change${p>1?'s are':' is'} not live yet.`:'The website and app show the latest version.'):'This trip is not live yet.'}</p>
+ ${ccan('edit')?`<button class="btn" data-ce="save" data-id="${id}">Save draft</button>`:''}
+ ${ccan('publish')?`<button class="btn solid" data-ce="publish" data-id="${id}" ${canPub?'':'disabled'}>Publish to website and app</button>`:ccan('edit')?'<p class="muted small">Your access is Editor. Save a draft and an owner will publish it.</p>':''}
+ ${ccan('edit')?`<button class="btn" data-ce="dup" data-id="${id}">Duplicate trip</button><button class="btn ghost" data-ce="discard" data-id="${id}" ${u?'':'disabled'}>Discard unsaved edits</button>`:''}
+ <p class="muted small">Every save records your account and the time. History cannot be edited or deleted.</p></div>${peoplePanel(t)}</aside></div>`}`};
+
+const peoplePanel=t=>{const P=TEAM.filter(u=>hasT(u,t)),own=CROLE[me().role].team;return `<div class="panel"><h3>People with access</h3>${P.map(u=>`<div class="who1 small">${av(u.id,'sm')}<span>${esc(u.name)}<span class="muted"> · ${u.role}${u.scope==='all'?'':u.scope.length===1?' · this trip only':' · '+u.scope.length+' trips'}</span></span>${own&&u.scope!=='all'?`<button class="btn sm ghost" data-ce="unshare" data-id="${u.id}" aria-label="Remove ${esc(u.name)} from this trip">Remove</button>`:''}</div>`).join('')}
+ ${own?(S.share===t.id?`<div class="field"><label for="shem">Email</label><input id="shem" type="email" placeholder="name@example.com"></div><div class="field"><label for="shr">Access</label><select id="shr"><option>Editor</option><option>Viewer</option></select></div><button class="btn solid" data-ce="sharego" data-id="${t.id}">Share this trip only</button><button class="btn ghost" data-ce="share" data-id="${t.id}">Cancel</button>`:`<button class="btn" data-ce="share" data-id="${t.id}">Share this trip</button>`):''}
+ <p class="muted small">People added here see only this trip in the portal.</p></div>`};
+const setPath=(o,p,v)=>{const k=p.split('.');let x=o;for(let i=0;i<k.length-1;i++)x=x[k[i]];const last=k[k.length-1];x[last]=(last==='price'||last==='seats')?(v===''?0:Number(v)):v};
+function refreshState(t){const u=diff(lastV(t).snap,t.draft).length,el=$('#unsv'),cs=$('#cstate');if(el)el.hidden=!u;if(cs){const p=t.live?diff(t.live,lastV(t).snap).length:null;cs.textContent=(u?`${u} unsaved change${u>1?'s':''}. `:'All edits saved. ')+(t.live?(p?`${p} saved change${p>1?'s are':' is'} not live yet.`:'The website and app show the latest version.'):'This trip is not live yet.')}
+ const pb=$('[data-ce="publish"]');if(pb)pb.disabled=!(ccan('publish')&&(u>0||(t.live&&diff(t.live,lastV(t).snap).length>0)||!t.live));const db=$('[data-ce="discard"]');if(db)db.disabled=!u}
+const curT=()=>S.route&&S.route.startsWith('tpage-')?cOf(S.route.slice(6)):null;
+document.addEventListener('input',e=>{const p=e.target.dataset&&e.target.dataset.cf;if(!p)return;const t=curT();if(!t||!ccan('edit'))return;setPath(t.draft,p,e.target.value);refreshState(t)});
+document.addEventListener('change',e=>{if(e.target.id==='invr'){S.invEm=($('#inv')||{}).value;S.invR=e.target.value;render();return}if(e.target.id==='cme'){S.me=e.target.value;render();toast('Now signed in as '+me().name+' ('+me().role+').');return}
+ const p=e.target.dataset&&e.target.dataset.cf;if(!p)return;const t=curT();if(!t||!ccan('edit'))return;setPath(t.draft,p,e.target.value);refreshState(t)});
+function addVer(t,kind,note){const prev=lastV(t)?lastV(t).snap:null,snap=cp(t.draft),ch=diff(prev,snap);const v={n:t.ver.length+1,t:tick(),by:me().id,kind,note:note||'',changes:ch,snap};t.ver.push(v);return v}
+const rr0=()=>{const y=scrollY;render();scrollTo(0,y)};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-ce]');if(!b||b.disabled)return;const k=b.dataset.ce,id=b.dataset.id,t=id?cOf(id):curT();
+ if(k==='open'){go('tpage-'+id);return}
+ if(k==='cwho'){S.cwho=id;render();return}
+ if(k==='tab'){S.ctab=S.ctab||{};S.ctab[id]=b.dataset.v;S.vprev=null;render();return}
+ if(k==='ver'){S.cver={id,n:+b.dataset.v};S.ctab=S.ctab||{};S.ctab[id]='history';S.vprev=null;if(S.route!=='tpage-'+id)go('tpage-'+id);else render();return}
+ if(k==='vprev'){const key=id+':'+b.dataset.v;S.vprev=S.vprev===key?null:key;render();return}
+ if(k==='invall'){S.invEm=($('#inv')||{}).value;S.invAll=id==='1';render();return}
+ if(k==='scope'){S.scopeEd=S.scopeEd===id?null:id;render();return}
+ if(k==='scopesave'){const u=who(id),v=$$('input[name="sc-'+id+'"]:checked').map(x=>x.value);u.scope=v.length===CT.length?'all':v;S.scopeEd=null;render();toast(u.name+' can now open: '+scopeTxt(u)+'.');return}
+ if(k==='askacc'){toast('Request sent to the owners (prototype: nothing is sent).');return}
+ if(k==='share'){S.share=S.share===id?null:id;rr0();return}
+ if(k==='sharego'){const em=($('#shem')||{}).value||'';if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){toast('Enter a valid email address.');return}let u=TEAM.find(x=>x.email.toLowerCase()===em.toLowerCase());if(u){if(u.scope!=='all'&&!u.scope.includes(id))u.scope.push(id)}else{u={id:'u'+TEAM.length,name:em.split('@')[0],email:em,role:$('#shr').value,scope:[id],invitedBy:me().id};TEAM.push(u)}S.share=null;rr0();toast(u.name+' can now open '+cOf(id).draft.name+' (prototype: no email is sent).');return}
+ if(k==='unshare'){const u=who(id),t0=curT();if(u.scope!=='all'){u.scope=u.scope.filter(x=>x!==t0.id)}rr0();toast(u.name+' no longer has access to '+t0.draft.name+'.');return}
+ if(k==='invite'){const em=($('#inv')||{}).value||'';if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){toast('Enter a valid email address.');return}const r=$('#invr').value;let sc='all';if(r!=='Owner'&&S.invAll===false){sc=$$('input[name="sc-inv"]:checked').map(x=>x.value);if(!sc.length){toast('Pick at least one trip.');return}}const u={id:'u'+TEAM.length,name:em.split('@')[0],email:em,role:r,scope:sc,invitedBy:me().id};TEAM.push(u);S.invEm='';S.invAll=true;toast('Invite sent to '+em+' as '+r+', '+scopeTxt(u)+' (prototype: nothing is sent).');render();return}
+ if(!ccan('edit'))return;
+ if(k==='dup'&&(me().scope!=='all'||(t&&!hasT(me(),t)))){toast('Only people with access to all trips can duplicate.');return}if(k==='new'&&me().scope!=='all')return;
+ if(k==='new'){const nid='trip'+(CT.length+1);BASE[nid]={name:'New trip',env:'Sand',dest:'',dur:'',summary:'',cover:PHOTOS[0],price:0,incl:'',days:[{title:'Day one',text:''}],deps:[]};const nt={id:nid,ver:[],live:null,draft:cp(BASE[nid])};CT.push(nt);addVer(nt,'Created');go('tpage-'+nid);toast('New trip page created as a draft.');return}
+ if(k==='dup'){const src=cOf(id),nid=id+'-copy'+(CT.length+1),d=cp(src.draft);d.name=d.name+' (copy)';d.deps=[];const nt={id:nid,ver:[],live:null,draft:d};CT.push(nt);const v=addVer(nt,'Duplicated');v.changes=[{txt:'Duplicated from '+src.draft.name+'. Departures left empty.'}];go('tpage-'+nid);toast('Copied. Add the new dates, then publish.');return}
+ if(!t)return;const d=t.draft;
+ if(k==='photo'){d.cover=PHOTOS[(PHOTOS.indexOf(d.cover)+1)%PHOTOS.length];S.keep=scrollY;render();scrollTo(0,S.keep);return}
+ const rr=()=>{const y=scrollY;render();scrollTo(0,y)};
+ if(k==='dadd'){d.days.push({title:'Day '+(d.days.length+1),text:''});rr();return}
+ if(k==='drm'){d.days.splice(+b.dataset.i,1);rr();return}
+ if(k==='dup1'||k==='ddn'){const i=+b.dataset.i,j=k==='dup1'?i-1:i+1;[d.days[i],d.days[j]]=[d.days[j],d.days[i]];rr();return}
+ if(k==='depadd'){const last=d.deps[d.deps.length-1];d.deps.push({date:'',seats:last?last.seats:12,pick:last?last.pick:PICK.join(' · ')});rr();return}
+ if(k==='deprm'){d.deps.splice(+b.dataset.i,1);rr();return}
+ if(k==='discard'){t.draft=cp(lastV(t).snap);render();toast('Unsaved edits discarded.');return}
+ if(k==='save'){if(!diff(lastV(t).snap,d).length){toast('Nothing new to save.');return}addVer(t,'Draft saved',ccan('publish')?'':'Waiting for an owner to publish');render();toast('Draft saved by '+me().name+'. Not live yet.');return}
+ if(k==='publish'){if(!ccan('publish'))return;if(d.deps.some(x=>!x.date)){toast('Add a date to every departure, or remove the empty one.');return}const v=addVer(t,'Published');const base=t.live;v.changes=base?diff(base,v.snap):[{txt:'First published to the website and app'}];if(!v.changes.length)v.changes=[{txt:'Published with no content changes'}];t.live=cp(d);render();toast('Published by '+me().name+'. The website and app now show this version.');return}
+ if(k==='restore'){const v=t.ver.find(x=>x.n===+b.dataset.v);t.draft=cp(v.snap);const nv=addVer(t,'Restored','Restored from version '+v.n+' ('+fullT(v.t)+')');S.cver={id:t.id,n:nv.n};render();toast('Version '+v.n+' restored as a draft. Publish to make it live.');return}
+});
+document.addEventListener('keydown',e=>{const r=e.target.closest&&e.target.closest('tr[data-ce="open"]');if(r&&(e.key==='Enter'||e.key===' ')&&e.target===r){e.preventDefault();go('tpage-'+r.dataset.id)}});
+
 /* ---- shell and routing ---- */
-const NJ={overview:'none',notifications:'alert',bookings:'book',payments:'pay',enquiries:'alert',trips:'trip',settings:'none',sitemap:'none',architecture:'none'};
-const NAV=[['overview','Overview','home'],['notifications','Notifications','bell'],['bookings','Bookings','list'],['payments','Payments','wallet'],['enquiries','Enquiries','enquiry'],['trips','Trips and capacity','trip'],['settings','Settings','sliders'],['sitemap','Sitemap','list'],['architecture','How it works','info']];
-function render(){if(!S.authed){$('#app').innerHTML=V.login();return}const h=(location.hash||'#overview').slice(1);const base=h.startsWith('booking-')?'bookings':h.startsWith('enquiry-')?'enquiries':h.startsWith('trip-')?'trips':h;S.route=h;
- const v=h.startsWith('booking-')?V.booking(h.slice(8)):h.startsWith('enquiry-')?V.enquiry(h.slice(8)):h.startsWith('trip-')?V.trip(h.slice(5)):(V[h]?V[h]():V.overview());
+const NJ={overview:'none',notifications:'alert',bookings:'book',payments:'pay',enquiries:'alert',trips:'trip',pages:'team',settings:'none',sitemap:'none',architecture:'none'};
+const NAV=[['overview','Overview','home'],['notifications','Notifications','bell'],['bookings','Bookings','list'],['payments','Payments','wallet'],['enquiries','Enquiries','enquiry'],['trips','Trips and capacity','trip'],['pages','Trip pages','note'],['settings','Settings','sliders'],['sitemap','Sitemap','list'],['architecture','How it works','info']];
+function render(){if(!S.authed){$('#app').innerHTML=V.login();return}const h=(location.hash||'#overview').slice(1);const base=h.startsWith('booking-')?'bookings':h.startsWith('enquiry-')?'enquiries':h.startsWith('trip-')?'trips':h.startsWith('tpage-')?'pages':h;S.route=h;
+ const v=h.startsWith('booking-')?V.booking(h.slice(8)):h.startsWith('enquiry-')?V.enquiry(h.slice(8)):h.startsWith('trip-')?V.trip(h.slice(5)):h.startsWith('tpage-')?V.tpage(h.slice(6)):(V[h]?V[h]():V.overview());
  const ae=document.activeElement&&document.activeElement.id,sel=ae==='q'?document.activeElement.selectionStart:null;
  $('#app').innerHTML=`<div class="app"><aside class="side"><div class="logo">HAJEELA<small>Admin portal</small></div><nav class="nav" aria-label="Main">${NAV.map(n=>`${n[3]==='grp'?'':''}<button class="j-${NJ[n[0]]||'none'} ${base===n[0]?'on':''}" data-go="${n[0]}"><span class="nicn">${ic(n[2])}</span><span>${n[1]}</span>${n[0]==='notifications'&&unread()?`<span class="badge" aria-label="${unread()} unread">${unread()}</span>`:''}</button>`).join('')}</nav>
  <details class="tools"><summary>${ic('tools',16)} Prototype tools</summary><p class="muted small">Fire a customer event to see the portal react.</p><select id="sim" aria-label="Fire a customer event"><option value="">Choose an event</option>${EVENTS.map(e=>`<option value="${e[0]}">${NT[e[0]]}</option>`).join('')}</select><button class="btn sm" data-replay="1" ${S.lastEv?'':'disabled'}>Replay last event</button></details><button class="signout" data-signout="1">${ic('chev',16)} Sign out</button></aside>
@@ -809,4 +1037,5 @@ render();
 })();
 </script>
 
-</body></html>
+</body>
+</html>
