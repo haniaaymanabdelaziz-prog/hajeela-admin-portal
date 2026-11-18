@@ -430,6 +430,46 @@ a.btn{text-decoration:none}
 .chg ins{background:color-mix(in srgb,var(--c-pay) 14%,var(--site));color:var(--ink)}
 .chg del{color:var(--c-refund)}
 .tagx{border-color:var(--c-team);color:var(--c-team)}
+
+/* ---- CMS: Photos and Website content ---- */
+.badge.soft{background:var(--fill);color:var(--ink)}
+.drop{display:grid;justify-items:center;text-align:center;gap:6px;padding:28px 20px;border:1.5px dashed var(--line);border-radius:var(--r-m);background:var(--site);cursor:pointer}
+.drop:hover,.drop.over{border-color:var(--ink);background:var(--soft)}
+.drop:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.drop .dic{width:52px;height:52px;border-radius:50%;background:var(--fill);display:grid;place-items:center}
+.msearch{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:0 14px;background:var(--site);flex:1;min-width:200px}
+.msearch input{border:0;padding:9px 0;background:none}.msearch input:focus{outline:none}
+.msearch:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.mcard{display:grid;text-align:left;padding:0;border:1px solid var(--line-2);border-radius:var(--r-m);background:var(--site);overflow:hidden}
+.mcard:hover{border-color:var(--ink)}
+.mthumb{aspect-ratio:4/3;width:100%;height:auto;min-height:0;border:0;border-radius:0}
+img.pimg{display:block;width:100%;object-fit:cover;background:var(--fill)}
+img.pimg.mthumb{aspect-ratio:4/3}
+img.pimg.big{max-height:520px;object-fit:contain}
+.mbody{display:grid;gap:4px;padding:12px 14px 14px}
+.mtop{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:4px}
+.mmiss{font-size:.75rem;color:var(--warn);border:1px solid var(--warn);border-radius:999px;padding:1px 8px;white-space:nowrap}
+.pbig{display:grid;gap:8px}
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:.88rem}
+.chk li{padding-left:24px;position:relative}
+.chk li::before{position:absolute;left:0;top:0;width:18px;text-align:center;font-weight:600}
+.chk li.no::before{content:"✕";color:var(--warn)}.chk li.yes::before{content:"✓";color:var(--ok)}
+.confirm{border:1px solid var(--bad);border-radius:var(--r-m);padding:12px;display:grid;gap:8px}
+.uref{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line-2);color:inherit;text-decoration:none}
+.uref span{display:grid}.uref:last-child{border-bottom:0}
+.frow.static{cursor:default}
+.picker{border:1px solid var(--line);border-radius:var(--r-m);padding:14px;display:grid;gap:12px;background:var(--soft);margin-top:8px}
+.pkh{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}.pkh .btn{margin-left:auto}
+.pkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.pk{display:grid;gap:2px;text-align:left;padding:6px;border:1px solid var(--line-2);border-radius:var(--r-m);background:var(--site)}
+.pk:hover{border-color:var(--ink)}.pk.on{border:2px solid var(--ink)}
+.pkimg{aspect-ratio:4/3;height:auto;min-height:0;border-radius:var(--r-s);margin-bottom:4px}
+.apr{display:inline-flex;align-items:center;gap:3px;font-size:.72rem;border:1px solid var(--ok);color:var(--ok);border-radius:999px;padding:0 7px;margin-left:6px;vertical-align:1px}
+.lnk{border:0;background:none;padding:0;text-decoration:underline;text-underline-offset:3px;color:inherit;font-size:inherit}
+.bad{color:var(--bad)}
+.wrapb{white-space:normal!important}
+@media (max-width:760px){.bar2 .seg{overflow-x:auto;max-width:100%;flex-wrap:nowrap}.bar2 .seg button{white-space:nowrap;flex:none}.mgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.mbody{padding:10px}}
 </style>
 </head>
 <body>
@@ -529,7 +569,7 @@ const DOT={Paid:'ok','Partially paid':'warn',Unpaid:'todo',['Payment failed']:'a
 const st=(t,x)=>`<span class="st ${DOT[x||t]===undefined?'':DOT[x||t]}">${t}</span>`;
 const ptag=s=>st(s);const stag=s=>st(s);
 const mask=(v,k)=>can('pii')?esc(v):(k==='email'?esc(v).replace(/^(.).*(@.*)$/,'$1•••$2'):esc(v).replace(/\d(?=\d{2})/g,'•'));
-const IC={home:'M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z',bell:'M6 17V11a6 6 0 0112 0v6l1.5 2h-15zM10 21h4',list:'M4 6h16M4 12h16M4 18h10',trip:'M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11zM12 12a2 2 0 100-4 2 2 0 000 4z',sliders:'M4 7h10M18 7h2M4 17h2M10 17h10M14 5v4M6 15v4',info:'M12 8v.01M11 12h1v5h1M12 21a9 9 0 100-18 9 9 0 000 18z',new_booking:'M12 5v14M5 12h14',payment_ok:'M5 12.5l4.5 4.5L19 7.5',payment_failed:'M12 8v5M12 16.5v.01M12 21a9 9 0 100-18 9 9 0 000 18z',cancelled:'M6 6l12 12M18 6L6 18',modified:'M4 20h4L19 9l-4-4L4 16zM13 7l4 4',full:'M9 11a3 3 0 100-6 3 3 0 000 6zM3 19a6 6 0 0112 0M16 11a3 3 0 100-6M21 19a6 6 0 00-4-5.6',enquiry:'M4 5h16v11H9l-5 4z',refund:'M4 12a8 8 0 108-8H7M7 4L4 7l3 3',search:'M11 18a7 7 0 100-14 7 7 0 000 14zM20 20l-4-4',chev:'M9 6l6 6-6 6',wallet:'M3 7h16a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2zM3 7l12-3v3M16 14h2',user:'M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0',mail:'M3 6h18v12H3zM3 7l9 7 9-7',note:'M6 3h9l4 4v14H6zM9 12h7M9 16h7',shield:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',tools:'M14 7l3-3 3 3-3 3M4 20l8-8M13 11l-2-2 4-4'};
+const IC={home:'M3 11l9-8 9 8v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z',bell:'M6 17V11a6 6 0 0112 0v6l1.5 2h-15zM10 21h4',list:'M4 6h16M4 12h16M4 18h10',trip:'M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11zM12 12a2 2 0 100-4 2 2 0 000 4z',sliders:'M4 7h10M18 7h2M4 17h2M10 17h10M14 5v4M6 15v4',info:'M12 8v.01M11 12h1v5h1M12 21a9 9 0 100-18 9 9 0 000 18z',new_booking:'M12 5v14M5 12h14',payment_ok:'M5 12.5l4.5 4.5L19 7.5',payment_failed:'M12 8v5M12 16.5v.01M12 21a9 9 0 100-18 9 9 0 000 18z',cancelled:'M6 6l12 12M18 6L6 18',modified:'M4 20h4L19 9l-4-4L4 16zM13 7l4 4',full:'M9 11a3 3 0 100-6 3 3 0 000 6zM3 19a6 6 0 0112 0M16 11a3 3 0 100-6M21 19a6 6 0 00-4-5.6',enquiry:'M4 5h16v11H9l-5 4z',refund:'M4 12a8 8 0 108-8H7M7 4L4 7l3 3',search:'M11 18a7 7 0 100-14 7 7 0 000 14zM20 20l-4-4',chev:'M9 6l6 6-6 6',wallet:'M3 7h16a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2zM3 7l12-3v3M16 14h2',user:'M12 12a4 4 0 100-8 4 4 0 000 8zM4 21a8 8 0 0116 0',mail:'M3 6h18v12H3zM3 7l9 7 9-7',note:'M6 3h9l4 4v14H6zM9 12h7M9 16h7',shield:'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z',tools:'M14 7l3-3 3 3-3 3M4 20l8-8M13 11l-2-2 4-4',img:'M4 5h16v14H4zM4 16l5-5 4 4 3-3 4 4M15 9.5a1.5 1.5 0 100-.01',globe:'M12 21a9 9 0 100-18 9 9 0 000 18zM3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z'};
 const ic=(k,w=18)=>`<svg width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${IC[k]}"/></svg>`;
 const JT={new_booking:'book',modified:'book',payment_ok:'pay',payment_failed:'pay',cancelled:'refund',refund:'refund',full:'trip',enquiry:'alert'};
 const JN={book:'Booking',pay:'Payment',refund:'Cancel and refund',trip:'Trip capacity',alert:'Alerts'};
@@ -839,12 +879,13 @@ V.pages=()=>{const all=[],VT=CT.filter(t=>hasT(me(),t));VT.forEach(t=>t.ver.forE
  </div></section>`}`};
 
 const field=(lab,path,val,o={})=>`<div class="field${o.wide?' wide':''}"><label for="cf-${path}">${lab}</label>${o.area?`<textarea id="cf-${path}" data-cf="${path}" ${o.ro?'readonly':''}>${esc(val)}</textarea>`:o.opts?`<select id="cf-${path}" data-cf="${path}" ${o.ro?'disabled':''}>${o.opts.map(x=>`<option ${x===val?'selected':''}>${x}</option>`).join('')}</select>`:`<input id="cf-${path}" data-cf="${path}" type="${o.type||'text'}" value="${esc(val)}" ${o.ro?'readonly':''} ${o.min!=null?'min="'+o.min+'"':''}>`}${o.hint?`<span class="muted small">${o.hint}</span>`:''}</div>`;
-const ph=(cap,cls)=>`<div class="ph ${cls||''}" role="img" aria-label="Photo placeholder: ${esc(cap)}"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".4" vector-effect="non-scaling-stroke"/></svg><span>${esc(cap)}</span></div>`;
+const ph=(cap,cls)=>{const P=typeof MEDIA!=='undefined'&&MEDIA.find(x=>x.title===cap&&x.src);if(P)return `<img class="pimg ${cls||''}" src="${P.src}" alt="${esc(P.alt||P.title)}">`;return ph0(cap,cls)};
+const ph0=(cap,cls)=>`<div class="ph ${cls||''}" role="img" aria-label="Photo placeholder: ${esc(cap)}"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0L100 60M100 0L0 60" stroke="currentColor" stroke-width=".4" vector-effect="non-scaling-stroke"/></svg><span>${esc(cap)}</span></div>`;
 function editTab(t){const d=t.draft,ro=!ccan('edit');
  return `${ro?'<div class="note">Your account can view this page but not edit it.</div>':''}
  <section class="blk"><div class="blkh"><h3>Basics</h3></div><div class="blkb"><div class="fgrid">
  ${field('Trip name','name',d.name,{ro})}${field('Environment','env',d.env,{opts:ENV,ro})}${field('Destination','dest',d.dest,{ro})}${field('Duration','dur',d.dur,{ro,hint:'For example: 3 days, 2 nights'})}${field('Short description','summary',d.summary,{area:1,wide:1,ro,hint:'One or two sentences. Shown on trip cards on the website and in the app.'})}
- <div class="field wide"><span class="lab">Cover photo</span><div class="cov">${ph(d.cover)}<div><p class="small">${esc(d.cover)}</p><p class="muted small">Sample placeholder. In the real portal you upload a photo here.</p>${ro?'':'<button class="btn sm" data-ce="photo">Replace photo</button>'}</div></div></div>
+ <div class="field wide"><span class="lab">Cover photo</span><div class="cov">${ph(d.cover)}<div><p class="small">${esc(d.cover)}</p><p class="muted small">${pByTitle(d.cover)?'From Photos'+(pByTitle(d.cover).status!=='ok'?' · <span class="bad">hidden, choose another</span>':''):'Not in Photos yet'}. Only approved photos can go on the website.</p>${ro?'':`<button class="btn sm" data-pick="open" data-ctx="t:${t.id}">Choose from Photos</button>`}</div></div>${S.pick==='t:'+t.id?picker('t:'+t.id,d.env,d.cover):''}</div>
  </div></div></section>
  <section class="blk"><div class="blkh"><h3>Days</h3><p class="muted small">Each day is a trailer, not a timetable.</p></div><div class="blkb">
  ${d.days.map((x,i)=>`<div class="dayc"><div class="dayh2"><b>Day ${i+1}</b>${ro?'':`<span class="row2"><button class="btn sm ghost" data-ce="dup1" data-i="${i}" ${i===0?'disabled':''} aria-label="Move day ${i+1} up">↑</button><button class="btn sm ghost" data-ce="ddn" data-i="${i}" ${i===d.days.length-1?'disabled':''} aria-label="Move day ${i+1} down">↓</button><button class="btn sm ghost" data-ce="drm" data-i="${i}" ${d.days.length<2?'disabled':''}>Remove</button></span>`}</div><div class="fgrid">${field('Title','days.'+i+'.title',x.title,{ro,wide:1})}${field('What happens','days.'+i+'.text',x.text,{area:1,wide:1,ro})}</div></div>`).join('')}
@@ -929,13 +970,227 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-ce]');if(!
 });
 document.addEventListener('keydown',e=>{const r=e.target.closest&&e.target.closest('tr[data-ce="open"]');if(r&&(e.key==='Enter'||e.key===' ')&&e.target===r){e.preventDefault();go('tpage-'+r.dataset.id)}});
 
+/* ---- CMS: Photos (media library) and Website content ----
+   Prototype: everything lives in this browser tab and resets on reload.
+   The real version stores photos in Supabase Storage and content in the database (see supabase/2-cms.sql). */
+const PLACES=[['fayoum','Fayoum','Sand'],['siwa','Siwa','Sand'],['white-desert','White Desert','Sand'],['dakhla-kharga','Dakhla & Kharga','Sand'],['old-cairo','Old Cairo','Sand'],['ras-mohammed','Ras Mohammed','Sea'],['dahab','Dahab','Sea'],['hurghada','Hurghada','Sea'],['marsa-alam','Marsa Alam','Sea'],['greece','Greece · The islands','Sea'],['st-catherine','St Catherine & Mount Sinai','Summit'],['lebanon','Lebanon · Cedars & Faraya','Snow'],['switzerland','Switzerland · The Alps','Snow'],['austria','Austria · Tyrol','Snow']];
+const placeN=id=>(PLACES.find(p=>p[0]===id)||[id,id||'No place'])[1];
+const PEOPLE=[['none','No one can be recognised'],['agreed','People in it, and they agreed'],['unknown','People in it, not asked yet']];
+const MST={wait:['Waiting for approval','Pending'],ok:['Approved','Confirmed'],hid:['Hidden','Cancelled']};
+const mp=(id,o)=>Object.assign({id,title:'',alt:'',env:'',place:'',trip:'',credit:'',taken:'',people:'',status:'wait',src:null,w:null,h:null,kb:null,orig:null,by:'hania',at:ago(9000),log:[]},o);
+const MEDIA=[
+ mp('p1',{title:'Reef from the boat',alt:'Turquoise reef seen from the side of a boat, two snorkellers in the water.',env:'Sea',place:'ras-mohammed',trip:'ras',credit:'Sample · Hajeela team',taken:'2026-04',people:'agreed',status:'ok',by:'mario',at:ago(42000)}),
+ mp('p2',{title:'Camp at sunset',alt:'Tents and a fire between white chalk rocks at sunset.',env:'Sand',place:'white-desert',trip:'white',credit:'Sample · Hajeela team',taken:'2026-03',people:'none',status:'ok',by:'mario',at:ago(39000)}),
+ mp('p3',{title:'Group on the dune',alt:'A group of friends sitting on top of a dune, laughing.',env:'Sand',place:'fayoum',trip:'fayoum',credit:'Sample · Hajeela team',taken:'2026-02',people:'agreed',status:'ok',by:'hania',at:ago(31000)}),
+ mp('p4',{title:'Lagoon from above',alt:'A shallow lagoon and a sandbar seen from above.',env:'Sea',place:'ras-mohammed',trip:'ras',credit:'Sample · Hajeela team',taken:'2026-05',people:'none',status:'ok',by:'hania',at:ago(30500)}),
+ mp('p5',{title:'Night sky at camp',alt:'Stars over a desert camp, a lantern glowing in front of a tent.',env:'Sand',place:'siwa',trip:'siwa',credit:'Sample · Hajeela team',taken:'2026-01',people:'none',status:'ok',by:'nadim',at:ago(30000)}),
+ mp('p6',{title:'Pottery wheels in Tunis village',alt:'Hands shaping clay on a pottery wheel.',env:'Sand',place:'fayoum',trip:'fayoum',credit:'Sample · Mario',taken:'2026-10',people:'agreed',by:'mario',at:ago(2200)}),
+ mp('p7',{title:'Sunrise on Mount Sinai',alt:'',env:'Summit',place:'st-catherine',trip:'',credit:'',taken:'2026-09',people:'agreed',by:'admin',at:ago(900)}),
+ mp('p8',{title:'Snorkel line at the Lighthouse reef',alt:'A line of snorkellers following a guide along a reef wall.',env:'Sea',place:'dahab',trip:'dahab',credit:'Sample · Trip lead',taken:'2026-11',people:'unknown',by:'lead',at:ago(300)}),
+ mp('p9',{title:'Bus at the pickup point',alt:'The Hajeela bus parked at night.',env:'Sand',place:'fayoum',trip:'',credit:'Sample · Admin',taken:'2026-08',people:'none',status:'hid',by:'admin',at:ago(20000)})];
+MEDIA.forEach(p=>{p.log.push({t:p.at,by:p.by,text:'Uploaded'});if(p.status==='ok')p.log.unshift({t:new Date(new Date(p.at).getTime()+3600e3).toISOString(),by:'hania',text:'Approved for the website and app'});if(p.status==='hid')p.log.unshift({t:ago(19000),by:'hania',text:'Hidden: not used on the website'})});
+let PID=10;
+const pOf=id=>MEDIA.find(p=>p.id===id);
+const pByTitle=t=>MEDIA.find(p=>p.title===t);
+const pmiss=p=>{const m=[];if(!p.title.trim())m.push('A caption');if(!p.alt.trim())m.push('A description for people who cannot see the photo');if(!p.env)m.push('An environment');if(!p.place)m.push('A place');if(!p.credit.trim())m.push('Who took it');if(!p.people)m.push('Whether people can be recognised');else if(p.people==='unknown')m.push('Permission from the people in it');return m};
+const pimg=(p,cls)=>p&&p.src?`<img class="pimg ${cls||''}" src="${p.src}" alt="${esc(p.alt||p.title)}">`:ph(p?p.title:'No photo',cls);
+const plog=(p,text)=>p.log.unshift({t:tick(),by:me().id,text});
+/* where a photo is used: trip page covers and website content photo fields */
+const pUses=p=>{const u=[];CT.forEach(t=>{const inD=t.draft.cover===p.title,inL=t.live&&t.live.cover===p.title;if(inD||inL)u.push({go:'tpage-'+t.id,what:'Trip page cover',name:t.draft.name,live:inL})});CI.forEach(it=>{fieldsOf(it).filter(f=>f.t==='photo').forEach(f=>{const inD=it.draft[f.k]===p.title,inL=it.live&&it.live[f.k]===p.title;if(inD||inL)u.push({go:'citem-'+it.id,what:COLS[it.col].one,name:itName(it),live:inL})})});return u};
+const mcount=k=>MEDIA.filter(p=>p.status===k).length;
+
+/* ---- Photos: list ---- */
+V.media=()=>{const f=S.mf||(S.mf={st:'all',env:'',place:'',q:''}),q=f.q.trim().toLowerCase();
+ const L=MEDIA.filter(p=>(f.st==='all'||p.status===f.st)&&(!f.env||p.env===f.env)&&(!f.place||p.place===f.place)&&(!q||(p.title+' '+p.alt+' '+placeN(p.place)+' '+p.credit).toLowerCase().includes(q)));
+ const canE=ccan('edit');
+ return `<div class="head"><div><h1>Photos</h1><p class="muted sub">Every trip photo in one place. Tag it once and it's ready for trip pages, destinations and the app. Nothing appears on the website until an owner approves it.</p></div></div>
+ ${acct()}
+ ${canE?`<label class="drop" id="drop"><input id="mup" type="file" accept="image/*" multiple class="vh"><span class="dic">${ic('img',26)}</span><b>Drop photos here, or choose files</b><span class="muted small">JPG, PNG or HEIC from a phone. Each photo is shrunk to 1,600 pixels on the long side before upload${f.env||f.place?`, and tagged ${[f.env,f.place&&placeN(f.place)].filter(Boolean).join(' · ')}`:''}.</span><span class="muted small">Prototype: photos stay in this browser tab until you reload. Nothing is uploaded anywhere.</span></label>`:'<div class="note">Your account can look at photos but not add them.</div>'}
+ <div class="bar2"><div class="seg" role="group" aria-label="Show">${[['all','All',MEDIA.length],['wait','Waiting for approval',mcount('wait')],['ok','Approved',mcount('ok')],['hid','Hidden',mcount('hid')]].map(x=>`<button class="${f.st===x[0]?'on':''}" aria-pressed="${f.st===x[0]}" data-mf="st" data-v="${x[0]}">${x[1]} <span class="n">${x[2]}</span></button>`).join('')}</div></div>
+ <div class="bar2"><div class="seg" role="group" aria-label="Environment">${[['','All environments'],...ENV.map(e=>[e,e])].map(x=>`<button class="${f.env===x[0]?'on':''}" aria-pressed="${f.env===x[0]}" data-mf="env" data-v="${x[0]}">${x[1]}</button>`).join('')}</div>
+ <label class="sel"><span class="lab">Place</span><select id="mfplace" aria-label="Filter by place"><option value="">All places</option>${PLACES.filter(p=>!f.env||p[2]===f.env).map(p=>`<option value="${p[0]}" ${f.place===p[0]?'selected':''}>${esc(p[1])}</option>`).join('')}</select></label>
+ <label class="search msearch"><span class="vh">Search photos</span>${ic('search',18)}<input id="mq" type="search" placeholder="Search captions, places, credits" value="${esc(f.q)}"></label></div>
+ ${L.length?`<div class="mgrid">${L.map(p=>{const m=pmiss(p),s=MST[p.status];return `<button class="mcard" data-go="photo-${p.id}">${pimg(p,'mthumb')}<span class="mbody"><span class="mtop">${st(s[0],s[1])}${p.status==='wait'&&m.length?`<span class="mmiss">${m.length} to fix</span>`:''}</span><b>${esc(p.title||'Untitled photo')}</b><span class="muted small">${[p.env,p.place&&placeN(p.place)].filter(Boolean).join(' · ')||'Not tagged yet'}</span><span class="muted small">${esc(who(p.by).name)} · ${rel(p.at)}</span></span></button>`}).join('')}</div>`:`<div class="empty">No photos match. ${f.st!=='all'||f.env||f.place||f.q?'<button class="btn ghost" data-mf="reset">Clear filters</button>':''}</div>`}`};
+
+/* ---- Photos: one photo ---- */
+const mfield=(lab,k,val,o={})=>`<div class="field${o.wide?' wide':''}"><label for="mf-${k}">${lab}</label>${o.area?`<textarea id="mf-${k}" data-pf="${k}" ${o.ro?'readonly':''} style="min-height:80px">${esc(val)}</textarea>`:o.opts?`<select id="mf-${k}" data-pf="${k}" ${o.ro?'disabled':''}><option value="">Choose…</option>${o.opts.map(x=>`<option value="${esc(x[0])}" ${x[0]===val?'selected':''}>${esc(x[1])}</option>`).join('')}</select>`:`<input id="mf-${k}" data-pf="${k}" type="${o.type||'text'}" value="${esc(val)}" ${o.ro?'readonly':''}>`}${o.hint?`<span class="muted small">${o.hint}</span>`:''}</div>`;
+V.photo=id=>{const p=pOf(id);if(!p)return `<div class="empty">Photo not found. <button class="btn ghost" data-go="media">Back to photos</button></div>`;
+ const ro=!ccan('edit'),own=ccan('publish'),m=pmiss(p),u=pUses(p),s=MST[p.status],locked=p.status!=='wait';
+ return `<div><button class="btn ghost" data-go="media">← All photos</button></div>
+ <div class="head"><div><div class="sts">${st(s[0],s[1])}</div><h1 style="margin-top:8px">${esc(p.title||'Untitled photo')}</h1><p class="muted sub">Uploaded by ${esc(who(p.by).name)} (${esc(who(p.by).email)}), ${rel(p.at)}.</p></div></div>
+ ${acct()}
+ <div class="dl"><div class="dlm">
+ <section class="blk"><div class="blkb pbig">${pimg(p,'big')}<p class="muted small">${p.src?`${p.w} × ${p.h} pixels · ${p.kb} KB${p.orig?` (was ${p.orig.toLocaleString('en-US')} KB before shrinking)`:''}`:'Sample placeholder. Real photos show here once uploaded.'}</p></div></section>
+ <section class="blk"><div class="blkh"><h3>Details</h3><p class="muted small">These travel with the photo wherever it's used.</p></div><div class="blkb"><div class="fgrid">
+ ${mfield('Caption','title',p.title,{ro:ro||locked,hint:locked?'Fixed once a photo is approved, because pages link to it by its caption.':'Short and plain. For example: Sunrise on Mount Sinai.'})}
+ ${mfield('Who took it','credit',p.credit,{ro,hint:'Shown as a small credit. Use a first name, or "Hajeela team".'})}
+ ${mfield('Description for people who cannot see the photo','alt',p.alt,{ro,area:1,wide:1,hint:'Say what is in it, in one sentence. Screen readers read this out, and search engines use it.'})}
+ ${mfield('Environment','env',p.env,{ro,opts:ENV.map(e=>[e,e])})}
+ ${mfield('Place','place',p.place,{ro,opts:PLACES.filter(x=>!p.env||x[2]===p.env).map(x=>[x[0],x[1]])})}
+ ${mfield('Trip it was taken on','trip',p.trip,{ro,opts:CT.map(t=>[t.id,t.draft.name]),hint:'Optional.'})}
+ ${mfield('Month taken','taken',p.taken,{ro,type:'month'})}
+ ${mfield('People in the photo','people',p.people,{ro,opts:PEOPLE,wide:1,hint:'Only use photos of people who agreed. No one is ever tagged or named.'})}
+ </div></div></section>
+ <section class="blk"><div class="blkh"><h3>History</h3><p class="muted small">Cannot be edited or deleted.</p></div><div class="blkb"><div class="feed">${p.log.map(x=>`<div class="frow static">${av(x.by)}<span><b>${esc(who(x.by).name)}</b> · ${esc(x.text)}<span class="muted small fmeta">${fullT(x.t)}</span></span></div>`).join('')}</div></div></section>
+ </div>
+ <aside class="dla"><div class="panel"><h3>Ready for the website?</h3>
+ ${m.length?`<ul class="chk">${m.map(x=>`<li class="no">${esc(x)}</li>`).join('')}</ul>`:'<ul class="chk"><li class="yes">Everything is filled in</li></ul>'}
+ ${p.status==='wait'?(own?`<button class="btn solid" data-pa="approve" data-id="${p.id}" ${m.length?'disabled':''}>Approve for website and app</button>${m.length?'<p class="muted small">Fill in the missing details first.</p>':''}`:'<p class="muted small">An owner approves photos. Until then it stays out of the website and app.</p>'):''}
+ ${p.status==='ok'&&own?`<button class="btn" data-pa="hide" data-id="${p.id}">Hide from website and app</button>${u.some(x=>x.live)?'<p class="muted small">It is live on a page right now. Hiding it removes it from the pickers, and you should choose another photo for those pages.</p>':''}`:''}
+ ${p.status==='hid'&&own?`<button class="btn" data-pa="unhide" data-id="${p.id}">Show again</button>`:''}
+ ${own?(S.pdel===p.id?`<div class="confirm"><p class="small"><b>Delete this photo for good?</b> It can't be undone.</p><div class="row2"><button class="btn sm danger" data-pa="delgo" data-id="${p.id}">Delete</button><button class="btn sm ghost" data-pa="delno">Keep it</button></div></div>`:`<button class="btn ghost" data-pa="del" data-id="${p.id}" ${u.length?'disabled':''}>Delete photo</button>${u.length?'<p class="muted small">Used on a page, so it can\'t be deleted. Hide it instead.</p>':''}`):''}
+ </div>
+ <div class="panel"><h3>Where it's used</h3>${u.length?u.map(x=>`<a class="uref" href="#${x.go}"><span><b>${esc(x.name)}</b><span class="muted small">${esc(x.what)}${x.live?' · live now':' · draft only'}</span></span>${ic('chev',16)}</a>`).join(''):'<p class="muted small">Not used yet. Approved photos can be picked on trip pages and in Website content.</p>'}</div></aside></div>`};
+
+/* ---- photo picker, shared by trip pages and website content ---- */
+const picker=(ctx,env,cur)=>{const L=MEDIA.filter(p=>p.status==='ok').sort((a,b)=>(b.env===env)-(a.env===env));
+ return `<div class="picker"><div class="pkh"><b>Choose an approved photo</b><span class="muted small">${env?env+' photos first. ':''}Only approved photos can go on the website.</span><button class="btn sm ghost" data-pick="close">Close</button></div>
+ ${L.length?`<div class="pkgrid">${L.map(p=>`<button class="pk ${p.title===cur?'on':''}" data-pick="use" data-ctx="${ctx}" data-id="${p.id}" aria-pressed="${p.title===cur}">${pimg(p,'pkimg')}<span class="small">${esc(p.title)}</span><span class="muted small">${p.env} · ${esc(placeN(p.place))}</span></button>`).join('')}</div>`:'<p class="muted small">No approved photos yet.</p>'}
+ <p class="muted small">Need a new one? <a href="#media">Upload it in Photos</a>, then an owner approves it.</p></div>`};
+
+/* ---- Website content ---- */
+const OPT_ENV=ENV.map(e=>[e,e]);
+const COLS={
+ pages:{name:'Page text',one:'Page text',desc:'Headlines and lines on the main pages. Lines marked "Approved" are your signed-off wording.'},
+ dests:{name:'Destinations',one:'Destination',desc:'Each place on the website, with its one-line description and day plan.',fields:[{k:'n',l:'Name',req:1},{k:'w',l:'Environment',t:'select',o:OPT_ENV},{k:'l',l:'One line',t:'area',hint:'One sentence. Shown on cards and at the top of the page.'},{k:'morning',l:'Day plan · Morning',t:'area'},{k:'midday',l:'Day plan · Midday',t:'area'},{k:'evening',l:'Day plan · Evening',t:'area'},{k:'photo',l:'Main photo',t:'photo'}]},
+ exps:{name:'Experiences',one:'Experience',desc:'The activities people can filter by, and the activity badge each one earns.',fields:[{k:'n',l:'Name',req:1},{k:'l',l:'One line',t:'area'},{k:'badge',l:'Activity badge name',hint:'Names are not final yet. The app shows "names not final" until you approve them.'},{k:'bline',l:'Badge description',hint:'One short line, in the app.'},{k:'photo',l:'Photo',t:'photo'}]},
+ favs:{name:'Hajeela favs',one:'Hajeela fav',desc:'The moments, people, corners and tastes on the Favs page.',fields:[{k:'t',l:'Title',req:1},{k:'k',l:'Type',t:'select',o:['Fav moment','Fav people','Fav corner','Fav taste'].map(x=>[x,x])},{k:'w',l:'Environment',t:'select',o:OPT_ENV},{k:'c',l:'Story',t:'area'},{k:'when',l:'First time',hint:'The real year. Leave the placeholder until you know it.'},{k:'real',l:'Checked with the people in it?',t:'select',o:[['no','Not checked yet'],['yes','Yes, they agreed'],['na','No real people in it']],hint:'Before launch, every story about a real person needs their OK.'},{k:'photo',l:'Photo',t:'photo'}]},
+ faqs:{name:'Help & FAQs',one:'Question',desc:'Questions and answers on the Help page.',fields:[{k:'g',l:'Section',t:'select',o:['Booking process','Payment information','Cancellation policy','Terms & privacy'].map(x=>[x,x])},{k:'q',l:'Question',req:1},{k:'a',l:'Answer',t:'area'}]}};
+const PF={home:[{k:'h',l:'Headline',req:1},{k:'line',l:'Supporting line',t:'area'},{k:'b1',l:'First button'},{k:'b2',l:'Second button'},{k:'film',l:'Link under the buttons'}],
+ env:[{k:'h',l:'Headline',req:1},{k:'line',l:'Supporting line',t:'area'},{k:'short',l:'Short line (cards)'},{k:'photo',l:'Photo',t:'photo'}],
+ plan:[{k:'h',l:'Headline',req:1},{k:'line',l:'Intro'},{k:'b',l:'Button'}],
+ create:[{k:'h',l:'Headline',req:1},{k:'line',l:'Supporting line',t:'area'}],
+ story:[{k:'h',l:'Headline',req:1},{k:'line',l:'Paragraph',t:'area'},{k:'founders',l:'Founders paragraph',t:'area',hint:'Working copy.'},{k:'photo',l:'Photo',t:'photo'}],
+ app:[{k:'h',l:'Headline',req:1},{k:'line',l:'Supporting line',t:'area'}]};
+const fieldsOf=it=>it.fields||COLS[it.col].fields;
+const itName=it=>it.label||it.draft.n||it.draft.t||it.draft.q||it.id;
+const CI=[];
+function citem(col,id,o,data,extra){const it=Object.assign({id:col+'-'+id,col,ver:[],live:null,draft:null,approved:{}},extra||{});const snap=cp(data);it.ver.push({n:1,t:ago(o&&o.ago||26000),by:(o&&o.by)||'hania',kind:'Created and published',note:'',changes:[{txt:'Copied in from the website, 17 Nov copy update'}],snap});it.live=cp(snap);it.draft=cp(snap);CI.push(it);return it}
+const W4={sand:'Sand',sea:'Sea',summit:'Summit',snow:'Snow'};
+citem('pages','home',null,{h:"There's always somewhere to go.",line:'Explore places, discover experiences and make plans your own.',b1:'Explore',b2:'Create',film:'See Hajeela through your eyes'},{label:'Home · top of the page',fields:PF.home,approved:{h:1,line:1}});
+[['sand','Go where it goes quiet.','Open landscapes, endless skies and nights under the stars.','Dunes, oases and nights that go quiet.',1],['sea','Find your way to the blue.','Clear waters, warm sunshine and long days by the sea.','Boats, reefs and islands you can swim to.',1],['summit','Somewhere closer to the sky.','Open trails, fresh air and views that stretch for miles.','Early starts, steady climbs, wide views.',1],['snow','Make room for a little wonder.','White landscapes, crisp mornings and cosy evenings.','Slopes, cedars and warm cabins.',0]].forEach(x=>citem('pages','env-'+x[0],null,{h:x[1],line:x[2],short:x[3],photo:''},{label:'Home · '+W4[x[0]],fields:PF.env,approved:x[4]?{h:1,line:1}:{},note:x[4]?'':'Working copy, not locked.'}));
+citem('pages','plan',null,{h:'Your people. Your idea. We make it happen.',line:"Tell us five things. We'll come back with a plan.",b:'Create your own trip'},{label:'Home · plan your own',fields:PF.plan,approved:{h:1}});
+citem('pages','create',null,{h:'Bring Your People.',line:"Tell us what you have in mind and we'll help you bring it together."},{label:'Create · top of the page',fields:PF.create,approved:{h:1,line:1}});
+citem('pages','story',null,{h:'A trip taken simply for the joy of going.',line:"Hajeela is a Bedouin word for a trip taken simply for the joy of going. No fixed destination, just the pleasure of discovering what's ahead, together.",founders:"It's as much about who you go with as where you go. Hajeela began with two friends who wanted to explore more, and grew into a way for others to do the same. Today, every group brings its own people, plans and stories.",photo:''},{label:'Our Story',fields:PF.story,approved:{h:1,line:1}});
+citem('pages','app',null,{h:'Everything for the trip, in your pocket.',line:'[Supporting line from the Get the App page]'},{label:'Get the App · top of the page',fields:PF.app});
+const DPLAN='[From ops: what happens in the ';
+[['fayoum','Fayoum','sand','Dunes, a lake and a pottery village, two hours from Cairo.','Group on the dune'],['siwa','Siwa','sand','Springs, salt lakes and an old mud-brick town on the edge of the Great Sand Sea.','Night sky at camp'],['white-desert','White Desert','sand','Chalk rocks that turn silver at night, and a camp under the stars.','Camp at sunset'],['ras-mohammed','Ras Mohammed','sea',"One of the Red Sea's oldest protected reefs, seen from a boat.",'Reef from the boat'],['dahab','Dahab','sea','A slow bay town where the reef starts a few steps from the shore.',''],['hurghada','Hurghada','sea','Island hopping and long days on the water.',''],['marsa-alam','Marsa Alam','sea','Quieter reefs further south, for your first proper dive.',''],['st-catherine','St Catherine & Mount Sinai','summit',"Egypt's highest peaks, climbed with Bedouin guides.",''],['old-cairo','Old Cairo','sand','Gates, workshops and food stops in the old city.',''],['dakhla-kharga','Dakhla & Kharga','sand','Old towns, hot springs and a long desert road.',''],['lebanon','Lebanon · Cedars & Faraya','snow','Snow under the cedars, an hour from the sea. Our nearest snow.',''],['switzerland','Switzerland · The Alps','snow','Big peaks, villages and fondue. A trip we have run before.',''],['austria','Austria · Tyrol','snow','Slopes, wooden chalets and warm evenings. A trip we have run before.',''],['greece','Greece · The islands','sea','Island hopping across clear water. A trip we have run before.','']].forEach(x=>{const fy=x[0]==='fayoum';citem('dests',x[0],null,{n:x[1],w:W4[x[2]],l:x[3],morning:fy?'Pickup at 7:00 from Tagamoa. Coffee on the bus.':DPLAN+'morning]',midday:fy?'Sandboarding, at your own pace. Lunch at camp.':DPLAN+'middle of the day]',evening:fy?'Pottery, sunset over the lake, then the road home.':DPLAN+'evening]',photo:x[4]})});
+[['diving','Diving','Deep Blue','You went under and stayed a while.'],['snorkelling','Snorkelling','Reef Explorer','Face down, eyes open.'],['boat','Boat days','Sea Legs','A day spent on the water.'],['sandboarding','Sandboarding','Dune Hopper','Down the dune, standing up (mostly).'],['camping','Camping','Under the Stars','A night out with no roof.'],['hiking','Hiking','Trailblazer','You walked it, every step.'],['stargazing','Stargazing','Star Collector','You learned what you were looking at.'],['culture','Culture & food','Curious Palate','You tried the thing you couldn\'t pronounce.'],['snow','Snow & skiing','First Tracks','Your first run on snow.']].forEach(x=>citem('exps',x[0],null,{n:x[1],l:'[One line about '+x[1].toLowerCase()+']',badge:x[2],bline:x[3],photo:''}));
+[['sand','Fav moment','First light over Wadi El Rayan',"Early, before the heat, the dunes go quiet and gold. Some people sandboard. Some just sit and watch. Either way, breakfast is waiting at the bottom.",'na','Group on the dune'],['sea','Fav moment','The second dive at Ras Mohammed',"The first time under, you're thinking about your breathing. The second time, you look around. That's when the reef opens up, and most people come up asking when they can go again.",'na','Reef from the boat'],['sand','Fav people','Tea with our Bedouin hosts',"A fire, sweet tea and stories told in a dialect older than the road in. No show and no stage. It's where our name comes from, so it's part of every desert trip we run.",'no','Camp at sunset'],['summit','Fav moment','Sunrise from the top of Mount Sinai',"You start in the dark, torch in hand, walking next to people you met that evening. By the time the light comes up, you're not strangers anymore.",'na',''],['sand','Fav corner',"Floating in Siwa's salt lakes","Turquoise water so salty you can't sink. Lie back, look up and let the quiet do the rest.",'na',''],['sea','Fav taste','Pizza on the boat, between two islands',"Somewhere between swims, someone asks who's hungry. We make it on board, one tray at a time, with the sea still drying on your shoulders.",'na',''],['sand','Fav taste','Warm feteer in Tunis village',"Baked in a clay oven and eaten straight away with honey, right next to the pottery wheels. Order a second one. You'll want it.",'na',''],['sand','Fav corner','The White Desert after dark',"The chalk rocks turn silver under the moon, and the stars go all the way down to the ground. Bring a warm layer. You'll want to stay up.",'na','Camp at sunset']].forEach((x,i)=>citem('favs','f'+(i+1),null,{t:x[2],k:x[1],w:W4[x[0]],c:x[3],when:'[Year to confirm]',real:x[4],photo:x[5]}));
+[['Booking process','How do I book?','Choose a trip and a date, add your travellers, check the summary and pay. No account needed.'],['Booking process','What does "request to book" mean?',"For some trips we confirm places by hand. You send a request, we confirm within 24 hours, then you pay. Until then, your place isn't confirmed."],['Booking process',"What's the difference between pending and confirmed?","Pending means we have your booking but it isn't final yet: either we're checking availability or your payment hasn't cleared. Confirmed means your place is yours."],['Payment information','How can I pay?','Card (Visa, Mastercard, Meeza), InstaPay or a mobile wallet.'],['Payment information','Can I pay a deposit?','On some trips, yes. You pay 30% to reserve and the rest 14 days before. (Placeholder, depends on the policy.)'],['Payment information','My payment failed. Was I charged?',"No. A failed payment isn't taken. Try again, or use another method."],['Cancellation policy','Can I change my date?','Free up to 7 days before the trip. (Placeholder.)'],['Cancellation policy','Can I cancel?','Request it from Manage your booking. Refunds follow the policy shown when you booked.'],['Cancellation policy','What if Hajeela cancels?','You get a full refund or a free move to another date, whichever you prefer.']].forEach((x,i)=>citem('faqs','q'+(i+1),null,{g:x[0],q:x[1],a:x[2]}));
+/* a few drafts in progress, so the publish flow can be seen */
+(()=>{const s=CI.find(x=>x.id==='dests-siwa');s.draft.morning='Hot spring swim at Cleopatra\'s Spring, then breakfast under the palms.';const v={n:2,t:ago(240),by:'admin',kind:'Draft saved',note:'Waiting for an owner to publish',snap:cp(s.draft)};v.changes=cdiff(fieldsOf(s),s.ver[0].snap,v.snap);s.ver.push(v);
+ const f=CI.find(x=>x.id==='favs-f3');f.draft.when='2019';const v2={n:2,t:ago(95),by:'mario',kind:'Draft saved',note:'Waiting for an owner to publish',snap:cp(f.draft)};v2.changes=cdiff(fieldsOf(f),f.ver[0].snap,v2.snap);f.ver.push(v2)})();
+function cdiff(F,a,b){if(!a)return [{txt:'Created'}];const out=[];F.forEach(f=>{const x=a[f.k]==null?'':String(a[f.k]),y=b[f.k]==null?'':String(b[f.k]);if(x!==y){const o=f.o?Object.fromEntries(f.o):null;out.push({f:f.l,from:(o?o[x]:x)||'(empty)',to:(o?o[y]:y)||'(empty)'})}});return out}
+const ciOf=id=>CI.find(x=>x.id===id);
+const cLast=it=>it.ver[it.ver.length-1];
+const cUnsaved=it=>cdiff(fieldsOf(it),cLast(it).snap,it.draft).length;
+const cUnpub=it=>it.live?cdiff(fieldsOf(it),it.live,cLast(it).snap).length:1;
+const cstat2=it=>!it.live?['Draft, not live','Pending']:cUnpub(it)||cUnsaved(it)?['Live · changes not published','Pending']:['Live on the website','Confirmed'];
+const holes=it=>fieldsOf(it).filter(f=>/\[[^\]]+\]/.test(String(it.draft[f.k]||''))).map(f=>f.l);
+const waitPub=()=>CI.filter(it=>cUnpub(it)>0);
+const curC=()=>S.route&&S.route.startsWith('citem-')?ciOf(S.route.slice(6)):null;
+
+V.content=()=>{const col=S.ccol||'pages',L=CI.filter(it=>it.col===col),wp=waitPub(),own=ccan('publish');
+ return `<div class="head"><div><h1>Website content</h1><p class="muted sub">Change the words and photos on the website without touching code. Editors save drafts, an owner publishes, and every change is kept.</p></div></div>
+ ${acct()}
+ ${wp.length?`<section class="blk"><div class="blkh"><h3>Waiting to be published <span class="n">${wp.length}</span></h3><p class="muted small">${own?'Saved by the team. Check each one, then publish.':'An owner will check these and publish them.'}</p></div><div class="blkb"><div class="feed">${wp.map(it=>{const l=cLast(it);return `<a class="frow" href="#citem-${it.id}">${av(l.by)}<span><b>${esc(itName(it))}</b> <span class="muted small">· ${COLS[it.col].one}</span><span class="muted small fmeta">${esc(who(l.by).name)} saved ${cUnpub(it)} change${cUnpub(it)===1?'':'s'}, ${rel(l.t)}</span></span><span class="muted">${ic('chev')}</span></a>`}).join('')}</div></div></section>`:''}
+ <div class="tabs" role="tablist" aria-label="Content type">${Object.keys(COLS).map(k=>`<button role="tab" class="${col===k?'on':''}" aria-selected="${col===k}" data-cc="${k}">${COLS[k].name}<span class="n">${CI.filter(it=>it.col===k).length}</span></button>`).join('')}</div>
+ <p class="muted small">${COLS[col].desc}</p>
+ <div class="tblw"><table class="tbl"><thead><tr><th>${col==='faqs'?'Question':'Name'}</th><th>Status</th><th>Placeholders</th><th>Last edited</th></tr></thead><tbody>${L.map(it=>{const s=cstat2(it),l=cLast(it),h=holes(it);return `<tr class="row" tabindex="0" data-cgo="${it.id}"><td><b class="wrapb">${esc(itName(it))}</b>${it.draft.w||it.draft.g?`<div class="muted small">${esc(it.draft.w||it.draft.g)}</div>`:''}</td><td>${st(s[0],s[1])}</td><td>${h.length?`<span class="mmiss">${h.length} to fill</span>`:'<span class="muted small">None</span>'}</td><td><div class="who1">${av(l.by,'sm')}<span>${esc(who(l.by).name)}<div class="muted small">${rel(l.t)}</div></span></div></td></tr>`}).join('')}</tbody></table></div>`};
+
+const cfield=(it,f,ro)=>{const v=it.draft[f.k]==null?'':it.draft[f.k],ap=it.approved[f.k],un=(S.unl||{})[it.id+':'+f.k],lock=ap&&!un,r=ro||lock,id='cmf-'+f.k;
+ const lab=`<label for="${id}">${f.l}${ap?` <span class="apr" title="Approved wording">${ic('shield',13)} Approved</span>`:''}</label>`;
+ if(f.t==='photo'){const p=pByTitle(v);return `<div class="field wide"><span class="lab">${f.l}</span><div class="cov">${v?pimg(p||{title:v},''):ph('No photo yet')}<div><p class="small">${v?esc(v):'<span class="muted">None chosen</span>'}</p>${p&&p.status!=='ok'?'<p class="small bad">This photo is hidden. Choose another one.</p>':''}${ro?'':`<div class="row2"><button class="btn sm" data-pick="open" data-ctx="c:${it.id}:${f.k}">${v?'Change photo':'Choose photo'}</button>${v?`<button class="btn sm ghost" data-pick="clear" data-ctx="c:${it.id}:${f.k}">Remove</button>`:''}</div>`}</div></div>${S.pick==='c:'+it.id+':'+f.k?picker('c:'+it.id+':'+f.k,it.draft.w||'',v):''}</div>`}
+ const ctl=f.t==='area'?`<textarea id="${id}" data-cmf="${f.k}" ${r?'readonly':''} style="min-height:90px">${esc(v)}</textarea>`:f.t==='select'?`<select id="${id}" data-cmf="${f.k}" ${r?'disabled':''}>${f.o.map(x=>`<option value="${esc(x[0])}" ${x[0]===v?'selected':''}>${esc(x[1])}</option>`).join('')}</select>`:`<input id="${id}" data-cmf="${f.k}" value="${esc(v)}" ${r?'readonly':''}>`;
+ const hint=ap?(lock?(ccan('publish')?`<span class="muted small">Approved word for word. <button class="lnk" data-cu="${f.k}">Unlock to change it</button></span>`:'<span class="muted small">Approved word for word. Only an owner can change it.</span>'):'<span class="muted small bad">Unlocked. This is approved wording, so change it only if you mean to.</span>'):f.hint?`<span class="muted small">${f.hint}</span>`:'';
+ return `<div class="field${f.t==='area'||f.t==='photo'?' wide':''}">${lab}${ctl}${hint}</div>`};
+function cpreview(it){const d=it.draft,p=d.photo?pByTitle(d.photo):null;
+ if(it.col==='faqs')return `<details class="faq" open><summary><b>${esc(d.q)}</b></summary><p class="small">${esc(d.a)}</p></details>`;
+ const h=d.h||d.n||d.t,line=d.line||d.l||d.c;
+ return `<div class="pweb">${d.photo!==undefined?(p?pimg(p,'big'):ph(d.photo||'Photo','big')):''}<div class="pwb">${d.w||d.k?`<span class="tagx">${esc([d.k,d.w].filter(Boolean).join(' · '))}</span>`:''}<h2>${esc(h)}</h2>${line?`<p>${esc(line)}</p>`:''}${d.short?`<p class="muted small">${esc(d.short)}</p>`:''}${d.b1?`<p><span class="chipx">${esc(d.b1)}</span> <span class="chipx">${esc(d.b2)}</span></p>`:''}${d.b?`<p><span class="chipx">${esc(d.b)}</span></p>`:''}${d.film?`<p class="small"><u>${esc(d.film)}</u></p>`:''}${d.morning!==undefined?`<div class="pdays"><div><span class="muted small">Morning</span><p class="small">${esc(d.morning)}</p></div><div><span class="muted small">Midday</span><p class="small">${esc(d.midday)}</p></div><div><span class="muted small">Evening</span><p class="small">${esc(d.evening)}</p></div></div>`:''}${d.badge?`<p class="small"><b>${esc(d.badge)}</b> · ${esc(d.bline)} <span class="muted">(name not final)</span></p>`:''}${d.when?`<p class="muted small">First time · ${esc(d.when)}</p>`:''}${d.founders?`<p class="small">${esc(d.founders)}</p>`:''}</div></div><p class="muted small">Rough preview in the low-fi style.</p>`}
+function chist(it){const sel=S.cv&&S.cv.id===it.id?S.cv.n:cLast(it).n,v=it.ver.find(x=>x.n===sel)||cLast(it);
+ return `<div class="hist"><div class="vlist" role="list">${it.ver.slice().reverse().map(x=>`<button role="listitem" class="vrow ${x.n===v.n?'on':''}" data-cv="${x.n}">${av(x.by,'sm')}<span><b>${dayLabel(x.t)}, ${clock(x.t)}</b><span class="small">${esc(who(x.by).name)}</span><span class="muted small">${x.kind}</span></span></button>`).join('')}</div>
+ <div class="vdet"><div class="who2">${av(v.by,'lg')}<div><h3>${esc(who(v.by).name)}</h3><p class="muted small">${esc(who(v.by).email)} · ${who(v.by).role}</p></div></div>
+ <div class="kvs"><div class="kv"><span>When</span><b>${fullT(v.t)}</b></div><div class="kv"><span>What they did</span><b>${v.kind}</b></div><div class="kv"><span>Version</span><b>${v.n} of ${it.ver.length}</b></div>${v.note?`<div class="kv"><span>Note</span><b>${esc(v.note)}</b></div>`:''}</div>
+ <h4>What changed</h4><ul class="chg">${v.changes.map(chg).join('')||'<li class="muted">No content changes.</li>'}</ul>
+ ${ccan('edit')&&v.n!==cLast(it).n?`<div class="row2"><button class="btn solid" data-ca="restore" data-v="${v.n}">Restore this version</button></div><p class="muted small">Restoring copies this version into a new draft. Nothing is deleted, and nothing goes live until an owner publishes.</p>`:''}</div></div>`}
+V.citem=id=>{const it=ciOf(id);if(!it)return `<div class="empty">Not found. <button class="btn ghost" data-go="content">Back to website content</button></div>`;
+ const ro=!ccan('edit'),tab=(S.ctab2||{})[id]||'edit',s=cstat2(it),l=cLast(it),u=cUnsaved(it),p=cUnpub(it),h=holes(it);
+ return `<div><button class="btn ghost" data-go="content" data-cc="${it.col}">← ${COLS[it.col].name}</button></div>
+ <div class="head"><div><div class="sts">${st(s[0],s[1])}<span class="st" id="cunsv" ${u?'':'hidden'}>Unsaved edits</span></div><h1 style="margin-top:8px">${esc(itName(it))}</h1><p class="muted sub">${COLS[it.col].one}. Last edited by ${esc(who(l.by).name)}, ${rel(l.t)}.${it.note?' '+esc(it.note):''}</p></div></div>
+ ${acct()}
+ <div class="tabs" role="tablist" aria-label="Content">${[['edit','Edit'],['preview','Preview'],['history','Version history',it.ver.length]].map(x=>`<button role="tab" class="${tab===x[0]?'on':''}" aria-selected="${tab===x[0]}" data-ctb="${x[0]}">${x[1]}${x[2]?`<span class="n">${x[2]}</span>`:''}</button>`).join('')}</div>
+ ${tab==='history'?chist(it):`<div class="dl"><div class="dlm">${tab==='edit'?`${ro?'<div class="note">Your account can view this but not edit it.</div>':''}<section class="blk"><div class="blkb"><div class="fgrid">${fieldsOf(it).map(f=>cfield(it,f,ro)).join('')}</div></div></section>`:cpreview(it)}</div>
+ <aside class="dla"><div class="panel"><h3>Save and publish</h3>
+ <p class="small" id="ccstate">${cstateTxt(it)}</p>
+ ${h.length?`<div class="note small"><b>Still has placeholders:</b> ${h.map(esc).join(', ')}. They show on the website in [brackets] until someone fills them in.</div>`:''}
+ ${ccan('edit')?`<button class="btn" data-ca="save">Save draft</button>`:''}
+ ${ccan('publish')?`<button class="btn solid" data-ca="publish" ${u||p?'':'disabled'}>Publish to the website</button>`:ccan('edit')?'<p class="muted small">Your access is Editor. Save a draft and an owner will publish it.</p>':''}
+ ${ccan('edit')?`<button class="btn ghost" data-ca="discard" ${u?'':'disabled'}>Discard unsaved edits</button>`:''}
+ <p class="muted small">Every save records your account and the time. History cannot be edited or deleted.</p></div></aside></div>`}`};
+const cstateTxt=it=>{const u=cUnsaved(it),p=cUnpub(it);return (u?`${u} unsaved change${u>1?'s':''}. `:'All edits saved. ')+(it.live?(p?`${p} saved change${p>1?'s are':' is'} not live yet.`:'The website shows the latest version.'):'Not live yet.')};
+function crefresh(it){const u=cUnsaved(it),e=$('#cunsv'),c=$('#ccstate');if(e)e.hidden=!u;if(c)c.textContent=cstateTxt(it);const pb=$('[data-ca="publish"]');if(pb)pb.disabled=!(u||cUnpub(it));const db=$('[data-ca="discard"]');if(db)db.disabled=!u}
+function caddVer(it,kind,note){const prev=cLast(it).snap,snap=cp(it.draft),v={n:it.ver.length+1,t:tick(),by:me().id,kind,note:note||'',changes:cdiff(fieldsOf(it),prev,snap),snap};it.ver.push(v);return v}
+
+/* ---- CMS events ---- */
+const rrK=()=>{const y=scrollY;render();scrollTo(0,y)};
+async function shrink(f){const url=URL.createObjectURL(f);try{const img=await new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=url});const k=Math.min(1,1600/Math.max(img.naturalWidth,img.naturalHeight)),w=Math.round(img.naturalWidth*k),h=Math.round(img.naturalHeight*k),c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);const d=c.toDataURL('image/jpeg',.82);return {src:d,w,h,kb:Math.round(d.length*.75/1024),orig:Math.round(f.size/1024)}}finally{URL.revokeObjectURL(url)}}
+const capFromName=n=>{const s=n.replace(/\.[^.]+$/,'').replace(/[-_]+/g,' ').replace(/\s+/g,' ').trim();return s?s[0].toUpperCase()+s.slice(1):'New photo'};
+async function addFiles(files){if(!ccan('edit'))return;const L=[...files].filter(f=>/^image\//.test(f.type)||/\.(heic|heif)$/i.test(f.name));if(!L.length){toast('Those files are not photos.');return}
+ const f=S.mf||{};let ok=0,bad=0;for(const file of L){try{const r=await shrink(file);const p=mp('p'+(++PID),Object.assign(r,{title:capFromName(file.name),env:f.env||'',place:f.place||'',by:me().id,at:tick()}));p.log.push({t:p.at,by:p.by,text:'Uploaded '+file.name});MEDIA.unshift(p);ok++}catch(e){bad++}}
+ if(S.mf)S.mf.st='all';render();toast(ok+' photo'+(ok===1?'':'s')+' added, waiting for approval.'+(bad?' '+bad+' could not be read (HEIC photos need converting first in this prototype).':''))}
+document.addEventListener('change',e=>{const t=e.target;
+ if(t.id==='mup'){addFiles(t.files);t.value='';return}
+ if(t.id==='mfplace'){S.mf.place=t.value;render();return}
+ if(t.dataset&&t.dataset.pf&&t.tagName==='SELECT'){const p=pOf(S.route.slice(6));if(!p||!ccan('edit'))return;const k=t.dataset.pf,lab={env:'Environment',place:'Place',trip:'Trip',people:'People in the photo'}[k];p[k]=t.value;if(k==='env'&&p.place&&(PLACES.find(x=>x[0]===p.place)||[])[2]!==t.value)p.place='';plog(p,lab+' set to '+(k==='place'?placeN(t.value):k==='trip'?(cOf(t.value)?cOf(t.value).draft.name:'none'):k==='people'?(PEOPLE.find(x=>x[0]===t.value)||['',''])[1]:t.value||'none'));rrK();return}
+ if(t.dataset&&t.dataset.pf){const p=pOf(S.route.slice(6));if(!p||!ccan('edit'))return;const k=t.dataset.pf,old=p[k];if(old!==t.value){p[k]=t.value;plog(p,({title:'Caption',alt:'Description',credit:'Credit',taken:'Month taken'}[k]||k)+' changed');rrK()}return}
+ if(t.dataset&&t.dataset.cmf){const it=curC();if(!it||!ccan('edit'))return;it.draft[t.dataset.cmf]=t.value;crefresh(it)}});
+document.addEventListener('input',e=>{const t=e.target;
+ if(t.id==='mq'){S.mf.q=t.value;const pos=t.selectionStart;render();const q=$('#mq');if(q){q.focus();q.setSelectionRange(pos,pos)}return}
+ if(t.dataset&&t.dataset.cmf){const it=curC();if(!it||!ccan('edit'))return;it.draft[t.dataset.cmf]=t.value;crefresh(it)}});
+document.addEventListener('dragover',e=>{const d=e.target.closest&&e.target.closest('#drop');if(d){e.preventDefault();d.classList.add('over')}});
+document.addEventListener('dragleave',e=>{const d=e.target.closest&&e.target.closest('#drop');if(d)d.classList.remove('over')});
+document.addEventListener('drop',e=>{const d=e.target.closest&&e.target.closest('#drop');if(!d)return;e.preventDefault();d.classList.remove('over');addFiles(e.dataTransfer.files)});
+document.addEventListener('keydown',e=>{const r=e.target.closest&&e.target.closest('tr[data-cgo]');if(r&&(e.key==='Enter'||e.key===' ')&&e.target===r){e.preventDefault();go('citem-'+r.dataset.cgo)}});
+document.addEventListener('click',e=>{const q=s=>e.target.closest(s);let x;
+ if(x=q('[data-mf]')){const k=x.dataset.mf;if(k==='reset')S.mf={st:'all',env:'',place:'',q:''};else{S.mf[k]=x.dataset.v;if(k==='env')S.mf.place=''}render();return}
+ if(x=q('[data-cgo]')){go('citem-'+x.dataset.cgo);return}
+ if(x=q('[data-cc]')){S.ccol=x.dataset.cc;if(!x.dataset.go)render();return}
+ if(x=q('[data-ctb]')){S.ctab2=S.ctab2||{};S.ctab2[S.route.slice(6)]=x.dataset.ctb;S.cv=null;render();return}
+ if(x=q('[data-cv]')){S.cv={id:S.route.slice(6),n:+x.dataset.cv};render();return}
+ if(x=q('[data-cu]')){S.unl=S.unl||{};S.unl[S.route.slice(6)+':'+x.dataset.cu]=1;rrK();return}
+ if(x=q('[data-pick]')){const k=x.dataset.pick,ctx=x.dataset.ctx;
+  if(k==='close'){S.pick=null;rrK();return}
+  if(k==='open'){S.pick=S.pick===ctx?null:ctx;rrK();return}
+  const parts=(ctx||'').split(':');let target=null,key=null,refresh=null;
+  if(parts[0]==='t'){const t=cOf(parts[1]);if(!t||!ccan('edit'))return;target=t.draft;key='cover';refresh=()=>refreshState(t)}
+  if(parts[0]==='c'){const it=ciOf(parts[1]);if(!it||!ccan('edit'))return;target=it.draft;key=parts[2]}
+  if(!target)return;
+  if(k==='clear'){target[key]='';S.pick=null;rrK();return}
+  if(k==='use'){const p=pOf(x.dataset.id);target[key]=p.title;S.pick=null;rrK();toast('Photo chosen. Save and publish to put it on the website.');return}}
+ if(x=q('[data-pa]')){const k=x.dataset.pa,p=pOf(x.dataset.id||'');
+  if(k==='delno'){S.pdel=null;rrK();return}
+  if(!ccan('publish')||!p)return;
+  if(k==='approve'){if(pmiss(p).length)return;p.status='ok';plog(p,'Approved for the website and app');rrK();toast('Approved. It can now be picked for trip pages and website content.');return}
+  if(k==='hide'){p.status='hid';plog(p,'Hidden from the website and app');rrK();toast('Hidden. It no longer shows in the photo pickers.');return}
+  if(k==='unhide'){p.status='ok';plog(p,'Shown again');rrK();toast('Showing again.');return}
+  if(k==='del'){S.pdel=p.id;rrK();return}
+  if(k==='delgo'){if(pUses(p).length)return;MEDIA.splice(MEDIA.indexOf(p),1);S.pdel=null;go('media');toast('Photo deleted.');return}}
+ if(x=q('[data-ca]')){const it=curC();if(!it||!ccan('edit'))return;const k=x.dataset.ca;
+  if(k==='discard'){it.draft=cp(cLast(it).snap);render();toast('Unsaved edits discarded.');return}
+  if(k==='save'){if(!cUnsaved(it)){toast('Nothing new to save.');return}caddVer(it,'Draft saved',ccan('publish')?'':'Waiting for an owner to publish');render();toast('Draft saved by '+me().name+'. Not live yet.');return}
+  if(k==='publish'){if(!ccan('publish'))return;const miss=fieldsOf(it).filter(f=>f.req&&!String(it.draft[f.k]||'').trim());if(miss.length){toast(miss[0].l+' cannot be empty.');return}const base=it.live;const v=caddVer(it,'Published');v.changes=cdiff(fieldsOf(it),base,v.snap);if(!v.changes.length)v.changes=[{txt:'Published with no content changes'}];it.live=cp(it.draft);render();toast('Published by '+me().name+'. The website now shows this version.');return}
+  if(k==='restore'){const v=it.ver.find(y=>y.n===+x.dataset.v);it.draft=cp(v.snap);const nv=caddVer(it,'Restored','Restored from version '+v.n+' ('+fullT(v.t)+')');S.cv={id:it.id,n:nv.n};render();toast('Version '+v.n+' restored as a draft. Publish to make it live.');return}}
+});
+
 /* ---- shell and routing ---- */
-const NJ={overview:'none',notifications:'alert',bookings:'book',payments:'pay',enquiries:'alert',trips:'trip',pages:'team',settings:'none',sitemap:'none',architecture:'none'};
-const NAV=[['overview','Overview','home'],['notifications','Notifications','bell'],['bookings','Bookings','list'],['payments','Payments','wallet'],['enquiries','Enquiries','enquiry'],['trips','Trips and capacity','trip'],['pages','Trip pages','note'],['settings','Settings','sliders'],['sitemap','Sitemap','list'],['architecture','How it works','info']];
-function render(){if(!S.authed){$('#app').innerHTML=V.login();return}const h=(location.hash||'#overview').slice(1);const base=h.startsWith('booking-')?'bookings':h.startsWith('enquiry-')?'enquiries':h.startsWith('trip-')?'trips':h.startsWith('tpage-')?'pages':h;S.route=h;
- const v=h.startsWith('booking-')?V.booking(h.slice(8)):h.startsWith('enquiry-')?V.enquiry(h.slice(8)):h.startsWith('trip-')?V.trip(h.slice(5)):h.startsWith('tpage-')?V.tpage(h.slice(6)):(V[h]?V[h]():V.overview());
+const NJ={overview:'none',notifications:'alert',bookings:'book',payments:'pay',enquiries:'alert',trips:'trip',pages:'team',media:'team',content:'team',settings:'none',sitemap:'none',architecture:'none'};
+const NAV=[['overview','Overview','home'],['notifications','Notifications','bell'],['bookings','Bookings','list'],['payments','Payments','wallet'],['enquiries','Enquiries','enquiry'],['trips','Trips and capacity','trip'],['pages','Trip pages','note'],['media','Photos','img'],['content','Website content','globe'],['settings','Settings','sliders'],['sitemap','Sitemap','list'],['architecture','How it works','info']];
+function render(){if(!S.authed){$('#app').innerHTML=V.login();return}const h=(location.hash||'#overview').slice(1);const base=h.startsWith('booking-')?'bookings':h.startsWith('enquiry-')?'enquiries':h.startsWith('trip-')?'trips':h.startsWith('tpage-')?'pages':h.startsWith('photo-')?'media':h.startsWith('citem-')?'content':h;S.route=h;
+ const v=h.startsWith('booking-')?V.booking(h.slice(8)):h.startsWith('enquiry-')?V.enquiry(h.slice(8)):h.startsWith('trip-')?V.trip(h.slice(5)):h.startsWith('tpage-')?V.tpage(h.slice(6)):h.startsWith('photo-')?V.photo(h.slice(6)):h.startsWith('citem-')?V.citem(h.slice(6)):(V[h]?V[h]():V.overview());
  const ae=document.activeElement&&document.activeElement.id,sel=ae==='q'?document.activeElement.selectionStart:null;
- $('#app').innerHTML=`<div class="app"><aside class="side"><div class="logo">HAJEELA<small>Admin portal</small></div><nav class="nav" aria-label="Main">${NAV.map(n=>`${n[3]==='grp'?'':''}<button class="j-${NJ[n[0]]||'none'} ${base===n[0]?'on':''}" data-go="${n[0]}"><span class="nicn">${ic(n[2])}</span><span>${n[1]}</span>${n[0]==='notifications'&&unread()?`<span class="badge" aria-label="${unread()} unread">${unread()}</span>`:''}</button>`).join('')}</nav>
+ $('#app').innerHTML=`<div class="app"><aside class="side"><div class="logo">HAJEELA<small>Admin portal</small></div><nav class="nav" aria-label="Main">${NAV.map(n=>`${n[3]==='grp'?'':''}<button class="j-${NJ[n[0]]||'none'} ${base===n[0]?'on':''}" data-go="${n[0]}"><span class="nicn">${ic(n[2])}</span><span>${n[1]}</span>${n[0]==='notifications'&&unread()?`<span class="badge" aria-label="${unread()} unread">${unread()}</span>`:''}${n[0]==='media'&&mcount('wait')?`<span class="badge soft" aria-label="${mcount('wait')} waiting for approval">${mcount('wait')}</span>`:''}${n[0]==='content'&&waitPub().length?`<span class="badge soft" aria-label="${waitPub().length} waiting to publish">${waitPub().length}</span>`:''}</button>`).join('')}</nav>
  <details class="tools"><summary>${ic('tools',16)} Prototype tools</summary><p class="muted small">Fire a customer event to see the portal react.</p><select id="sim" aria-label="Fire a customer event"><option value="">Choose an event</option>${EVENTS.map(e=>`<option value="${e[0]}">${NT[e[0]]}</option>`).join('')}</select><button class="btn sm" data-replay="1" ${S.lastEv?'':'disabled'}>Replay last event</button></details><button class="signout" data-signout="1">${ic('chev',16)} Sign out</button></aside>
  <div class="main"><header class="top"><label class="search gsearch"><span class="vh">Find a booking</span>${ic('search',18)}<input id="gq" type="search" placeholder="Find a booking by name or reference" value=""></label><div class="topr"><label class="sel inl"><span class="lab">Viewing as</span><select id="role" aria-label="Viewing as">${Object.keys(ROLES).map(r=>`<option ${S.role===r?'selected':''}>${r}</option>`).join('')}</select></label><button class="bell" id="bell" aria-label="Notifications, ${unread()} unread" aria-expanded="${S.popOpen}">${ic('bell',20)}${unread()?`<span class="badge">${unread()}</span>`:''}</button></div></header>
  <div class="pop" id="pop" ${S.popOpen?'':'hidden'}><div class="pophd"><b>Notifications</b><button class="btn sm ghost" data-markall="1">Mark all as read</button></div>${N.slice(0,5).map(n=>nrow(n,true)).join('')}<div style="padding:10px 16px"><button class="btn sm ghost" data-go="notifications">See all and history</button></div></div>
